@@ -12,7 +12,6 @@ class SpeedTest extends StatefulWidget {
 }
 
 class _SpeedTestState extends State<SpeedTest> {
-
   @override
   void initState() {
     super.initState();
@@ -115,6 +114,24 @@ class _SpeedTestState extends State<SpeedTest> {
                       ),
                       minimum: 0,
                       maximum: 150,
+                      annotations: [
+                          GaugeAnnotation(
+                              widget:Padding(
+                                padding: EdgeInsets.only(left: 25.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(200),
+                                      gradient: RadialGradient(
+                                          radius: 0.15,
+                                          colors: [kPersonalBlue.withOpacity(0.15),kPersonalDarkGrey.withOpacity(0.1)]
+                                      )
+                                  ),
+                                  height: MediaQuery.of(context).size.height*0.4,
+                                  width: MediaQuery.of(context).size.width*0.8,
+                                ),
+                              )
+                          ),
+                        ],
                       pointers: <GaugePointer>[
                         NeedlePointer(
                           value: displayRate,
@@ -127,8 +144,9 @@ class _SpeedTestState extends State<SpeedTest> {
                             color: kPersonalBlue,
                           ),
                         )
-                      ])
-                ]),
+                      ]),
+                ]
+            ),
             Column(
               children: [
               Text(
