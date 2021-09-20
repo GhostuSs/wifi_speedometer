@@ -1,17 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '../screens/constants/colorPallette.dart';
 
-Widget btmNavBar(int selectedIndex, callback) {
-  return SizedBox(
-    height: 100,
-    child: BottomNavigationBar(
+CupertinoTabBar btmNavBar(int selectedIndex) {
+  return CupertinoTabBar(
+      backgroundColor: kPersonalDarkGrey,
+      activeColor: kPersonalBlue,
+      inactiveColor: kPersonalLightGrey,
       currentIndex: selectedIndex,
-      type: BottomNavigationBarType.fixed,
-      backgroundColor: kPersonalBlack,
-      selectedItemColor: kPersonalBlue,
-      unselectedItemColor: kPersonalGrey,
-      onTap: callback,
       items: [
         BottomNavigationBarItem(
             icon: Image.asset('assets/tab_test.png'),
@@ -42,6 +39,5 @@ Widget btmNavBar(int selectedIndex, callback) {
               color: kPersonalBlue,
             )),
       ],
-    ),
   );
 }
