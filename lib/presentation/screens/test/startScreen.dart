@@ -70,7 +70,7 @@ class _TestScreen extends State<StartScreen> {
         title: const Text(
             'Speed Test',
           style: TextStyle(
-            fontSize: 24.0,
+            fontSize: 28.0,
             fontFamily: 'OpenSans-SemiBold',
             fontWeight: FontWeight.w600
           )
@@ -82,7 +82,7 @@ class _TestScreen extends State<StartScreen> {
             setState((){
               Navigator.pushNamed(context, '/speedtest');
             });
-          }) : AlertDialog(title: Text('no internet connection'),)
+          }) : Text('no internet connection')
       )
     );
   }

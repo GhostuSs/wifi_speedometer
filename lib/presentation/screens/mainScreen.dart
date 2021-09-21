@@ -17,7 +17,7 @@ class _MainScreen extends State<MainScreen> {
   Widget build(BuildContext context) {
     List pages = [
       StartScreen(),
-      StartScreen(),
+      SpeedTest(),
       StartScreen(),
       SettingsScreen()
     ];
