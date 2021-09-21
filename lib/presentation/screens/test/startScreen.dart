@@ -8,6 +8,8 @@ import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/components/startBtn.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 import 'package:device_information/device_information.dart';
+
+
 class StartScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -38,6 +40,10 @@ class _TestScreen extends State<StartScreen> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       result = await _connectivity.checkConnectivity();
+      var suffix = context.read<Data>();
+      suffix.wifi=await wifiInfo.getWifiName() ?? 'kal';
+      suffix.ip=await wifiInfo.getWifiIP() ?? 'kal';
+      suffix.device=await DeviceInformation.deviceModel;
 
     } on PlatformException catch (e) {
       print(e.toString());
@@ -50,13 +56,8 @@ class _TestScreen extends State<StartScreen> {
   }
 
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
-    setState(() async {
+    setState((){
       _connectionStatus = result;
-      var suffix = context.read<Data>();
-      suffix.wifi=await wifiInfo.getWifiName() ?? 'kal';
-      suffix.ip=await wifiInfo.getWifiIP() ?? 'kal';
-      suffix.device=await DeviceInformation.deviceModel;
-      print('${suffix.wifi} | ${suffix.device} | ${suffix.ip}');
     });
   }
 

@@ -21,10 +21,10 @@ class WifiInfoCard extends StatelessWidget{
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children:[
-            fields(CupertinoIcons.globe, 'ISP', 'AT&T',false),
+            fields(CupertinoIcons.globe, 'ISP',suffix.isp,false),
             fields(CupertinoIcons.wifi, 'Wi-Fi Name', '${suffix.wifi}',false),
             fields(CupertinoIcons.location_solid, 'IP Address', '${suffix.ip}',false),
-            fields(CupertinoIcons.device_laptop, 'Server', 'Nashville, USA',false),
+            fields(CupertinoIcons.device_laptop, 'Server','Vitry-sur-Seine, Fr',false),
             fields(Icons.phone_iphone, 'Device', '${suffix.device}',true),
 
           ],
