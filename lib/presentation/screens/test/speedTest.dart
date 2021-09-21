@@ -28,13 +28,15 @@ class _SpeedTestState extends State<SpeedTest> {
           });
           internetSpeedTest.startUploadTesting(
             onDone: (double transferRate, SpeedUnit unit) {
-              setState(() {
+              setState(() async {
                 uploadRate = transferRate;
                 uploadRate = uploadRate * 10;
                 protectGauge(uploadRate);
                 unitText =
                 unit == SpeedUnit.Kbps ? 'Kb/s' : 'Mb/s';
                 isTesting = false;
+                await Future.delayed(const Duration(seconds: 1,milliseconds: 500));
+                Navigator.pushNamed(context, '/results');
               });
             },
             onProgress: (double percent, double transferRate,
@@ -88,10 +90,7 @@ class _SpeedTestState extends State<SpeedTest> {
   bool isTesting = false;
 
   void protectGauge(double rate) {
-    if (rate > 150) {
-    } else {
       displayRate = rate;
-    }
   }
   @override
   Widget build(BuildContext context) {
@@ -103,12 +102,13 @@ class _SpeedTestState extends State<SpeedTest> {
           children: <Widget>[
             SfRadialGauge(
                 enableLoadingAnimation: true,
+                animationDuration: 500,
                 axes: <RadialAxis>[
                   RadialAxis(
                       showLabels: false,
                       showTicks: false,
                       axisLineStyle: AxisLineStyle(
-                        color: kPersonalBlue,
+                        color: kPersonalLightGrey.withOpacity(0.25),
                         thickness: 25,
                         cornerStyle: CornerStyle.bothCurve,
                       ),
@@ -143,14 +143,20 @@ class _SpeedTestState extends State<SpeedTest> {
                           knobStyle: KnobStyle(
                             color: kPersonalBlue,
                           ),
-                        )
+                        ),
+                        RangePointer(
+                            value: displayRate,
+                            width: 25,
+                            enableAnimation: true,
+                            color: kPersonalBlue,
+                            cornerStyle: CornerStyle.bothCurve)
                       ]),
                 ]
             ),
             Column(
               children: [
               Text(
-                  '${downloadRate.round()}',
+                  '${displayRate.round()}',
                   style: TextStyle(
                       color: kPersonalWhite,
                       fontSize: 32,

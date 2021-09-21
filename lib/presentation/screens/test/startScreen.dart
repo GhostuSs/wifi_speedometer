@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:wifi_info_flutter/wifi_info_flutter.dart';
 import 'package:wifi_speed_test/presentation/components/startBtn.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 
@@ -15,6 +18,9 @@ class StartScreen extends StatefulWidget {
 class _TestScreen extends State<StartScreen> {
   ConnectivityResult _connectionStatus = ConnectivityResult.none;
   final Connectivity _connectivity = Connectivity();
+  var wifiInfo = WifiInfo();
+  var device = DeviceInfoPlugin();
+  String? connName, connIP,name;
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
   @override
   void initState() {
@@ -34,6 +40,8 @@ class _TestScreen extends State<StartScreen> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       result = await _connectivity.checkConnectivity();
+      connName= await wifiInfo.getWifiName();
+      connIP = await wifiInfo.getWifiIP();
     } on PlatformException catch (e) {
       print(e.toString());
       return;
@@ -45,8 +53,9 @@ class _TestScreen extends State<StartScreen> {
   }
 
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
-    setState(() {
+    setState((){
       _connectionStatus = result;
+      print('$connName $connIP $name');
     });
   }
 
@@ -67,7 +76,7 @@ class _TestScreen extends State<StartScreen> {
       ),
       body: Center(
           child: _connectionStatus != ConnectivityResult.none  ? StartButton(onPressed: (){
-            setState(() {
+            setState((){
               Navigator.pushNamed(context, '/speedtest');
             });
           }) : Text('')

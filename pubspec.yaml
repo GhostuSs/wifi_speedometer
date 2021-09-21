@@ -29,7 +29,8 @@ dependencies:
   percent_indicator: ^3.0.1
   fluttertoast: ^8.0.8
   rflutter_alert: ^2.0.4
-  tabnavigator: ^1.0.0
+  wifi_info_flutter: ^2.0.2
+  device_info_plus: ^2.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -57,6 +58,7 @@ flutter:
     - assets/tab_settings.png
     - assets/tab_history.png
     - assets/tab_pass.png
+    - assets/trash.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
