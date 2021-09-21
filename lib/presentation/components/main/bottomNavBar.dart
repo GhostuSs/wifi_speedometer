@@ -11,10 +11,10 @@ CupertinoTabBar btmNavBar(int selectedIndex) {
       currentIndex: selectedIndex,
       items: [
         BottomNavigationBarItem(
-            icon: Image.asset('assets/tab_test.png'),
+            icon: Image.asset('assets/test.png'),
             label: 'Test',
             activeIcon: Image.asset(
-              'assets/tab_test.png',
+              'assets/test.png',
               color: kPersonalBlue,
             )),
         BottomNavigationBarItem(

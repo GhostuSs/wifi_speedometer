@@ -13,7 +13,7 @@ class WifiInfoCard extends StatelessWidget{
         child: Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color:kPersonalLightGrey.withOpacity(0.25),
+        color:kPersonalLightGrey.withOpacity(0.15),
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Padding(

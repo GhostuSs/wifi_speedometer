@@ -66,7 +66,7 @@ flutter:
     - assets/tab_settings.png
     - assets/tab_history.png
     - assets/tab_pass.png
-    - assets/trash.png
+    - assets/test.png
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

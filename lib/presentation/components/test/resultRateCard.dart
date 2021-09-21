@@ -18,7 +18,7 @@ class ResultsRateCard extends StatelessWidget{
         width: MediaQuery.of(context).size.width*0.44,
         height: MediaQuery.of(context).size.height*0.12,
         decoration: BoxDecoration(
-          color:kPersonalLightGrey.withOpacity(0.25),
+          color:kPersonalLightGrey.withOpacity(0.15),
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(

@@ -22,6 +22,11 @@ class StartButton extends StatelessWidget {
           gradient: LinearGradient(
               begin: FractionalOffset.topLeft,
               end: FractionalOffset.bottomRight,
+            stops: [
+              0.25,
+              0.5,
+              0.75,
+            ],
             colors: <Color>[
               Color(0xFF3498CB),
               Color(0xFF55B4D1),
