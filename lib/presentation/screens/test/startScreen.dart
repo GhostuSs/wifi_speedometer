@@ -8,7 +8,8 @@ import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/components/startBtn.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 import 'package:device_information/device_information.dart';
-
+import 'package:dio/dio.dart';
+import 'package:dart_ipify/dart_ipify.dart';
 
 class StartScreen extends StatefulWidget {
   @override
@@ -21,6 +22,8 @@ class _TestScreen extends State<StartScreen> {
   ConnectivityResult _connectionStatus = ConnectivityResult.none;
   final Connectivity _connectivity = Connectivity();
   var wifiInfo = WifiInfo();
+  var dio = Dio();
+  var temp;
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
   @override
   void initState() {
@@ -40,11 +43,7 @@ class _TestScreen extends State<StartScreen> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       result = await _connectivity.checkConnectivity();
-      var suffix = context.read<Data>();
-      suffix.wifi=await wifiInfo.getWifiName() ?? 'kal';
-      suffix.ip=await wifiInfo.getWifiIP() ?? 'kal';
-      suffix.device=await DeviceInformation.deviceModel;
-
+      dataSet();
     } on PlatformException catch (e) {
       print(e.toString());
       return;
@@ -66,11 +65,13 @@ class _TestScreen extends State<StartScreen> {
     return Scaffold(
       backgroundColor: kPersonalDarkGrey,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0.0,
         title: const Text(
             'Speed Test',
           style: TextStyle(
             fontSize: 24.0,
+            fontFamily: 'OpenSans-SemiBold',
             fontWeight: FontWeight.w600
           )
         ),
@@ -81,11 +82,17 @@ class _TestScreen extends State<StartScreen> {
             setState((){
               Navigator.pushNamed(context, '/speedtest');
             });
-          }) : Text('')
+          }) : AlertDialog(title: Text('no internet connection'),)
       )
     );
   }
+  dataSet() async {
+    var suffix = context.read<Data>();
+    suffix.wifi=await wifiInfo.getWifiBSSID() ?? 'kal';
+    suffix.ip=await Ipify.ipv4();
+    suffix.device=await DeviceInformation.deviceModel;
+    final response = await dio.get('http://ip-api.com/json/${context.read<Data>().ip}');
+    suffix.isp=response.data['isp'];
+  }
 }
-
-
 

@@ -29,17 +29,11 @@ class ResultsRateCard extends StatelessWidget{
                 keyVal==Keys.download
                     ? Text(
                     'download: '.toUpperCase(),
-                    style: TextStyle(
-                        color: kPersonalLightGrey,
-                        fontSize: 20.0
-                    )
+                    style: _textStyle()
                 )
                     :Text(
                     'upload: '.toUpperCase(),
-                    style: TextStyle(
-                        color: kPersonalLightGrey,
-                        fontSize: 20.0
-                    )
+                    style: _textStyle()
                 ),
                 Icon(
                   keyVal==Keys.download
@@ -59,6 +53,7 @@ class ResultsRateCard extends StatelessWidget{
                   '$value',
                 style: TextStyle(
                   color: kPersonalWhite,
+                  fontFamily: 'OpenSans-SemiBold',
                   fontWeight: FontWeight.w600,
                   fontSize: 36.0
                 ),
@@ -69,7 +64,7 @@ class ResultsRateCard extends StatelessWidget{
                 'Mpbs',
                 style: TextStyle(
                     color: kPersonalBlue,
-                    fontWeight: FontWeight.normal,
+                    fontFamily: 'OpenSans-Regular',
                     fontSize: 18.0
                 ),
               )
@@ -80,5 +75,11 @@ class ResultsRateCard extends StatelessWidget{
       ),
     );
   }
-
+TextStyle _textStyle(){
+    return TextStyle(
+        color: kPersonalLightGrey,
+        fontFamily: 'OpenSans-Regular',
+        fontSize: 20.0
+    );
+}
 }

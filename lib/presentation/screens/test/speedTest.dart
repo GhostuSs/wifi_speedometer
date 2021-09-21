@@ -163,6 +163,7 @@ class _SpeedTestState extends State<SpeedTest> {
                   style: TextStyle(
                       color: kPersonalWhite,
                       fontSize: 32,
+                      fontFamily:'OpenSans-Regular',
                       fontWeight: FontWeight.w600
                   )
               ),
@@ -171,7 +172,7 @@ class _SpeedTestState extends State<SpeedTest> {
                     style: TextStyle(
                         color: kPersonalBlue,
                         fontSize: 18,
-                        fontWeight: FontWeight.w600
+                        fontFamily: 'OpenSans-Regular'
                     )
                 )
             ]
@@ -191,6 +192,7 @@ class _SpeedTestState extends State<SpeedTest> {
                         style: TextStyle(
                             color: kPersonalWhite,
                             fontSize: 18,
+                            fontFamily:'OpenSans-SemiBold',
                             fontWeight: FontWeight.w600
                         ),
                       ),
@@ -204,6 +206,7 @@ class _SpeedTestState extends State<SpeedTest> {
                                 style: TextStyle(
                                     color: kPersonalWhite,
                                     fontSize: 36,
+                                    fontFamily: 'OpenSans-Bold',
                                     fontWeight: FontWeight.bold
                                 )
                             ),
@@ -214,7 +217,7 @@ class _SpeedTestState extends State<SpeedTest> {
                                   style: TextStyle(
                                       color: kPersonalBlue,
                                       fontSize: 16,
-                                      fontWeight: FontWeight.normal
+                                      fontFamily: 'OpenSans-Regular',
                                   )
                               ),
                             )
@@ -234,6 +237,7 @@ class _SpeedTestState extends State<SpeedTest> {
                             style: TextStyle(
                                 color: kPersonalWhite,
                                 fontSize: 18,
+                                fontFamily: 'OpenSans-SemiBold',
                                 fontWeight: FontWeight.w600
                             ),
                           ),

@@ -56,6 +56,7 @@ Widget fields(IconData icon,String nameOfField,value,last){
                   style: TextStyle(
                     color: kPersonalLightGrey,
                     fontSize: fontSize,
+                    fontFamily: 'OpenSans-Regular',
                     fontWeight: FontWeight.normal,
                   ),
                 )
@@ -66,6 +67,7 @@ Widget fields(IconData icon,String nameOfField,value,last){
               style: TextStyle(
                   color: kPersonalWhite,
                   fontWeight: FontWeight.normal,
+                  fontFamily: 'OpenSans-Regular',
                   fontSize: fontSize
               ),
             ),

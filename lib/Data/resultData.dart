@@ -5,4 +5,13 @@ class Data{
   String wifi='';
   String ip='';
   String device='';
+
+  removeData(){
+    downloadRate=0;
+    uploadRate=0;
+    isp='';
+    wifi='';
+    ip='';
+    device='';
+  }
 }

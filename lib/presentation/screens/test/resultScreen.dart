@@ -18,7 +18,7 @@ class _ResultScreen extends State<ResultScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPersonalDarkGrey,
-      appBar: appBar(),
+      appBar: appBar(context),
       body: Column(
         children: [
           SizedBox(height: 15),
@@ -30,6 +30,7 @@ class _ResultScreen extends State<ResultScreen>{
                 style: TextStyle(
                     color: kPersonalWhite,
                     fontSize: 18,
+                    fontFamily: 'OpenSans-SemiBold',
                     fontWeight: FontWeight.w600
                 )
           )

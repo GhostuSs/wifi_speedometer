@@ -47,7 +47,8 @@ class StartButton extends StatelessWidget {
               child: Text('start'.toUpperCase(),
                 style: TextStyle(
                   color: kPersonalWhite,
-                  fontWeight: FontWeight.w600,
+                  fontFamily: 'OpenSans-Regular',
+                  fontWeight: FontWeight.bold,
                   fontSize: 32.0
                 )
               ),
