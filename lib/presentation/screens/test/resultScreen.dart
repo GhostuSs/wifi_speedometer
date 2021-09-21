@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
-import 'package:wifi_speed_test/presentation/components/resultRateCard.dart';
-import 'package:wifi_speed_test/presentation/components/resultsScreenAppBar.dart';
-import 'package:wifi_speed_test/presentation/components/wifiInfoCard.dart';
+import 'package:wifi_speed_test/presentation/components/test/resultRateCard.dart';
+import 'package:wifi_speed_test/presentation/components/test/resultsScreenAppBar.dart';
+import 'package:wifi_speed_test/presentation/components/test/wifiInfoCard.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 
 class ResultScreen extends StatefulWidget{

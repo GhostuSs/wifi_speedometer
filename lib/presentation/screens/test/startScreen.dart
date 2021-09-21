@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/src/provider.dart';
 import 'package:wifi_info_flutter/wifi_info_flutter.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
-import 'package:wifi_speed_test/presentation/components/startBtn.dart';
+import 'package:wifi_speed_test/presentation/components/main/startBtn.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 import 'package:device_information/device_information.dart';
 import 'package:dio/dio.dart';

@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/constants/colorPallette.dart';
+import '../../screens/constants/colorPallette.dart';
 
 CupertinoTabBar btmNavBar(int selectedIndex) {
   return CupertinoTabBar(
-      backgroundColor: kPersonalDarkGrey,
+      backgroundColor: kPersonalBlack,
       activeColor: kPersonalBlue,
       inactiveColor: kPersonalLightGrey,
       currentIndex: selectedIndex,
