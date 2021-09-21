@@ -4,8 +4,8 @@ enum Keys{
   download,
   upload,
 }
-class ResultsCard extends StatelessWidget{
-  ResultsCard(Keys this.keyVal,int this.value);
+class ResultsRateCard extends StatelessWidget{
+  ResultsRateCard(Keys this.keyVal,int this.value);
   final keyVal;
   final value;
   @override
@@ -42,7 +42,7 @@ class ResultsCard extends StatelessWidget{
                     )
                 ),
                 Icon(
-                  value==Keys.download
+                  keyVal==Keys.download
                       ? Icons.keyboard_arrow_down_rounded
                       : Icons.keyboard_arrow_up_rounded,
                   size: 40.0,

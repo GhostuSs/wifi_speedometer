@@ -4,12 +4,18 @@ import 'package:wifi_speed_test/presentation/screens/mainScreen.dart';
 import 'package:wifi_speed_test/presentation/screens/test/resultScreen.dart';
 import 'package:wifi_speed_test/presentation/screens/test/speedTest.dart';
 import 'package:wifi_speed_test/presentation/screens/test/startScreen.dart';
-
+import 'package:provider/provider.dart';
+import 'Data/resultData.dart';
 void main() => runApp(
-    MaterialApp(
-      initialRoute: "/",
-        routes: _routes
-        ),
+    MultiProvider(
+      providers: [
+        Provider<Data>(create: (_) => Data()),
+      ],
+      child: MaterialApp(
+          initialRoute: "/",
+          routes: _routes
+      ),
+    )
 );
 
 final _routes = {

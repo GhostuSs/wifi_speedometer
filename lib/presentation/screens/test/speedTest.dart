@@ -3,9 +3,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:internet_speed_test/internet_speed_test.dart';
 import 'package:internet_speed_test/callbacks_enum.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/testServer.dart';
-
+import 'package:provider/provider.dart';
 class SpeedTest extends StatefulWidget {
   @override
   _SpeedTestState createState() => _SpeedTestState();
@@ -35,6 +36,8 @@ class _SpeedTestState extends State<SpeedTest> {
                 unitText =
                 unit == SpeedUnit.Kbps ? 'Kb/s' : 'Mb/s';
                 isTesting = false;
+                context.read<Data>().downloadRate=downloadRate.round();
+                context.read<Data>().uploadRate=uploadRate.round();
                 await Future.delayed(const Duration(seconds: 1,milliseconds: 500));
                 Navigator.pushNamed(context, '/results');
               });

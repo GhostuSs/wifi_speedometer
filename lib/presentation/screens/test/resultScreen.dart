@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wifi_speed_test/presentation/components/resultCards.dart';
+import 'package:provider/src/provider.dart';
+import 'package:wifi_speed_test/Data/resultData.dart';
+import 'package:wifi_speed_test/presentation/components/resultRateCard.dart';
+import 'package:wifi_speed_test/presentation/components/resultsScreenAppBar.dart';
+import 'package:wifi_speed_test/presentation/components/wifiInfoCard.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 
 class ResultScreen extends StatefulWidget{
@@ -36,43 +40,21 @@ class _ResultScreen extends State<ResultScreen>{
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ResultsCard(Keys.download,75),
-                ResultsCard(Keys.upload,85),
+                ResultsRateCard(
+                    Keys.download,
+                    context.read<Data>().downloadRate
+                ),
+                ResultsRateCard(
+                    Keys.upload,
+                    context.read<Data>().uploadRate
+                ),
               ],
             ),
           ),
+          WifiInfoCard(),
         ]
     )
     );
   }
-  PreferredSizeWidget appBar(){
-    return AppBar(
-      elevation: 0.0,
-      toolbarHeight: 80,
-      backgroundColor: kPersonalDarkGrey,
-      leading: IconButton(
-        onPressed: () {  },
-        icon: Icon(Icons.arrow_back_ios),
-        color: kPersonalWhite,
-        iconSize: 28.0,
-      ),
-      title: Text(
-        'Result',
-        style: TextStyle(
-            color: kPersonalWhite,
-            fontSize: 28.0,
-            fontWeight: FontWeight.w600
-        ),
-      ),
-      actions: [
-        IconButton(
-            onPressed: (){},
-            icon: Image.asset(
-              'assets/trash.png',
-              height: 28.0,
-            )
-        )
-      ],
-    );
-  }
+
 }
