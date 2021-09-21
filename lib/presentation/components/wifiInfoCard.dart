@@ -36,58 +36,64 @@ class WifiInfoCard extends StatelessWidget{
 Widget fields(IconData icon,String nameOfField,value,last){
     double fontSize=24;
     double iconSize=28;
-    return Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Padding(
-                padding: EdgeInsets.only(top: 15,bottom: 1),
-                child: Icon(
-                  icon,
-                  color: kPersonalLightGrey,
-                  size: iconSize,
-                )
-            ),//Icon
-            Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    '$nameOfField',
-                    style: TextStyle(
-                      color: kPersonalLightGrey,
-                      fontSize: fontSize,
-                      fontFamily: 'OpenSans-Regular',
-                      fontWeight: FontWeight.normal,
+    return Padding(
+      padding: EdgeInsets.only(top: 15),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+              padding: EdgeInsets.only(bottom: 5),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Padding(
+                      padding: EdgeInsets.only(bottom: 1),
+                      child: Icon(
+                        icon,
+                        color: kPersonalLightGrey,
+                        size: iconSize,
+                      )
+                  ),//Icon
+                  Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          '$nameOfField',
+                          style: TextStyle(
+                            color: kPersonalLightGrey,
+                            fontSize: fontSize,
+                            fontFamily: 'OpenSans-Regular',
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      )
+                  ),
+                  Spacer(),
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      '$value',
+                      style: TextStyle(
+                          color: kPersonalWhite,
+                          fontWeight: FontWeight.normal,
+                          fontFamily: 'OpenSans-Regular',
+                          fontSize: fontSize
+                      ),
                     ),
                   ),
-                )
-            ),
-            Spacer(),
-            FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                '$value',
-                style: TextStyle(
-                    color: kPersonalWhite,
-                    fontWeight: FontWeight.normal,
-                    fontFamily: 'OpenSans-Regular',
-                    fontSize: fontSize
-                ),
-              ),
-            ),
-          ],
+                ],
 
-        ),
-        SizedBox(height: 3),
-        last
-            ? Text('')
-            : Divider(
-          thickness: 1.0,
-          color: kPersonalLightGrey,
-        )
-       ],
+              )
+          ),
+          last
+              ? Text('')
+              : Divider(
+            thickness: 1.0,
+            color: kPersonalLightGrey,
+          )
+        ],
+      ),
     );
 }
 
