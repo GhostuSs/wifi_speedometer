@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wifi_speed_test/presentation/components/main/bottomNavBar.dart';
 import 'package:wifi_speed_test/presentation/screens/settings/settingsScreen.dart';
+import 'package:wifi_speed_test/presentation/screens/test/speedTest.dart';
 import 'package:wifi_speed_test/presentation/screens/test/startScreen.dart';
 import 'constants/colorPallette.dart';
 
