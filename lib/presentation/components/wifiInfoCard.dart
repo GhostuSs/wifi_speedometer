@@ -51,24 +51,30 @@ Widget fields(IconData icon,String nameOfField,value,last){
             ),//Icon
             Padding(
                 padding: EdgeInsets.only(left: 15),
-                child: Text(
-                  '$nameOfField',
-                  style: TextStyle(
-                    color: kPersonalLightGrey,
-                    fontSize: fontSize,
-                    fontFamily: 'OpenSans-Regular',
-                    fontWeight: FontWeight.normal,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    '$nameOfField',
+                    style: TextStyle(
+                      color: kPersonalLightGrey,
+                      fontSize: fontSize,
+                      fontFamily: 'OpenSans-Regular',
+                      fontWeight: FontWeight.normal,
+                    ),
                   ),
                 )
             ),
             Spacer(),
-            Text(
-              '$value',
-              style: TextStyle(
-                  color: kPersonalWhite,
-                  fontWeight: FontWeight.normal,
-                  fontFamily: 'OpenSans-Regular',
-                  fontSize: fontSize
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                '$value',
+                style: TextStyle(
+                    color: kPersonalWhite,
+                    fontWeight: FontWeight.normal,
+                    fontFamily: 'OpenSans-Regular',
+                    fontSize: fontSize
+                ),
               ),
             ),
           ],
