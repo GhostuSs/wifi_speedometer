@@ -15,8 +15,8 @@ class ResultsRateCard extends StatelessWidget{
     return FittedBox(
       fit: BoxFit.scaleDown,
       child: Container(
-        //width: MediaQuery.of(context).size.width*0.44,
-        //height: MediaQuery.of(context).size.height*0.12,
+        width: MediaQuery.of(context).size.width*0.44,
+        height: MediaQuery.of(context).size.height*0.12,
         decoration: BoxDecoration(
           color:kPersonalLightGrey.withOpacity(0.25),
           borderRadius: BorderRadius.circular(10.0),
