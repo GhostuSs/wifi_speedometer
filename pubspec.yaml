@@ -30,7 +30,7 @@ dependencies:
   fluttertoast: ^8.0.8
   rflutter_alert: ^2.0.4
   wifi_info_flutter: ^2.0.2
-  device_info_plus: ^2.1.0
+  device_information: ^0.0.4
   provider: ^6.0.0
 
 

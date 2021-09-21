@@ -1,15 +1,13 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/src/provider.dart';
 import 'package:wifi_info_flutter/wifi_info_flutter.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/components/startBtn.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
-
+import 'package:device_information/device_information.dart';
 class StartScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -21,7 +19,6 @@ class _TestScreen extends State<StartScreen> {
   ConnectivityResult _connectionStatus = ConnectivityResult.none;
   final Connectivity _connectivity = Connectivity();
   var wifiInfo = WifiInfo();
-  var device = DeviceInfoPlugin();
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
   @override
   void initState() {
@@ -41,10 +38,6 @@ class _TestScreen extends State<StartScreen> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       result = await _connectivity.checkConnectivity();
-      var suffix = context.read<Data>();
-      suffix.wifi=(await wifiInfo.getWifiName())!;
-      suffix.ip=(await wifiInfo.getWifiIP())!;
-      suffix.device=device.iosInfo.toString();
 
     } on PlatformException catch (e) {
       print(e.toString());
@@ -57,8 +50,13 @@ class _TestScreen extends State<StartScreen> {
   }
 
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
-    setState((){
+    setState(() async {
       _connectionStatus = result;
+      var suffix = context.read<Data>();
+      suffix.wifi=await wifiInfo.getWifiName() ?? 'kal';
+      suffix.ip=await wifiInfo.getWifiIP() ?? 'kal';
+      suffix.device=await DeviceInformation.deviceModel;
+      print('${suffix.wifi} | ${suffix.device} | ${suffix.ip}');
     });
   }
 
