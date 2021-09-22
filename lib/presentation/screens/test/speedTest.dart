@@ -4,6 +4,7 @@ import 'package:internet_speed_test/internet_speed_test.dart';
 import 'package:internet_speed_test/callbacks_enum.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
+import 'package:wifi_speed_test/presentation/components/main/bottomNavigationBar/bottomNavBar.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/testServer.dart';
 import 'package:provider/provider.dart';
@@ -99,182 +100,7 @@ class _SpeedTestState extends State<SpeedTest> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPersonalDarkGrey,
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            SfRadialGauge(
-                enableLoadingAnimation: true,
-                animationDuration: 500,
-                axes: <RadialAxis>[
-                  RadialAxis(
-                      showLabels: false,
-                      showTicks: false,
-                      axisLineStyle: AxisLineStyle(
-                        color: kPersonalLightGrey.withOpacity(0.25),
-                        thickness: 25,
-                        cornerStyle: CornerStyle.bothCurve,
-                      ),
-                      minimum: 0,
-                      maximum: 150,
-                      annotations: [
-                          GaugeAnnotation(
-                              widget:Padding(
-                                padding: EdgeInsets.only(left: 25.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(200),
-                                      gradient: RadialGradient(
-                                          radius: 0.15,
-                                          colors: [kPersonalBlue.withOpacity(0.15),kPersonalDarkGrey.withOpacity(0.1)]
-                                      )
-                                  ),
-                                  height: MediaQuery.of(context).size.height*0.4,
-                                  width: MediaQuery.of(context).size.width*0.8,
-                                ),
-                              )
-                          ),
-                        ],
-                      pointers: <GaugePointer>[
-                        NeedlePointer(
-                          value: displayRate,
-                          enableAnimation: true,
-                          needleColor: kPersonalBlue,
-                          needleStartWidth: 1.2,
-                          needleEndWidth: 4.7,
-                          needleLength: 0.65,
-                          knobStyle: KnobStyle(
-                            color: kPersonalBlue,
-                          ),
-                        ),
-                        RangePointer(
-                            value: displayRate,
-                            width: 25,
-                            enableAnimation: true,
-                            color: kPersonalBlue,
-                            cornerStyle: CornerStyle.bothCurve)
-                      ]),
-                ]
-            ),
-            Column(
-              children: [
-              Text(
-                  '${displayRate.round()}',
-                  style: TextStyle(
-                      color: kPersonalWhite,
-                      fontSize: 32,
-                      fontFamily:'OpenSans-Regular',
-                      fontWeight: FontWeight.w600
-                  )
-              ),
-                Text(
-                    'Mbps',
-                    style: TextStyle(
-                        color: kPersonalBlue,
-                        fontSize: 18,
-                        fontFamily: 'OpenSans-Regular'
-                    )
-                )
-            ]
-            ),
-            SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                    padding: EdgeInsets.only(left: 30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        'download:'.toUpperCase(),
-                        style: TextStyle(
-                            color: kPersonalWhite,
-                            fontSize: 18,
-                            fontFamily:'OpenSans-SemiBold',
-                            fontWeight: FontWeight.w600
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Row(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                                downloadRate == 0 ?'-':'${downloadRate.round()} ',
-                                style: TextStyle(
-                                    color: kPersonalWhite,
-                                    fontSize: 36,
-                                    fontFamily: 'OpenSans-Bold',
-                                    fontWeight: FontWeight.bold
-                                )
-                            ),
-                            downloadRate == 0 ? Text('') : Padding(
-                                padding: EdgeInsets.only(bottom: 4.5 ),
-                              child: Text(
-                                  'Mbps',
-                                  style: TextStyle(
-                                      color: kPersonalBlue,
-                                      fontSize: 16,
-                                      fontFamily: 'OpenSans-Regular',
-                                  )
-                              ),
-                            )
-                          ]
-                      )
-                    ]
-                )
-                ),
-                Padding(
-                    padding: EdgeInsets.only(right: 30),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'upload:'.toUpperCase(),
-                            style: TextStyle(
-                                color: kPersonalWhite,
-                                fontSize: 18,
-                                fontFamily: 'OpenSans-SemiBold',
-                                fontWeight: FontWeight.w600
-                            ),
-                          ),
-                          SizedBox(height: 20),
-                          Row(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                    uploadRate == 0 ?'-':'${uploadRate.round()} ',
-                                    style: TextStyle(
-                                        color: kPersonalWhite,
-                                        fontSize: 36,
-                                        fontWeight: FontWeight.bold
-                                    )
-                                ),
-                                uploadRate == 0 ? Text('') : Padding(
-                                  padding: EdgeInsets.only(bottom: 4.5 ),
-                                  child: Text(
-                                      'Mbps',
-                                      style: TextStyle(
-                                          color: kPersonalBlue,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.normal
-                                      )
-                                  ),
-                                )
-                              ]
-                          )
-                        ]
-                    )
-                )
-              ],
-            )
-          ],
-        ),
-      ),
+      body: body(),
     );
   }
   void showError(String eMsg) {
@@ -287,4 +113,180 @@ class _SpeedTestState extends State<SpeedTest> {
         textColor: kPersonalWhite,
         fontSize: 16.0);
   }
+  Widget body()=>Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          SfRadialGauge(
+              enableLoadingAnimation: true,
+              animationDuration: 500,
+              axes: <RadialAxis>[
+                RadialAxis(
+                    showLabels: false,
+                    showTicks: false,
+                    axisLineStyle: AxisLineStyle(
+                      color: kPersonalLightGrey.withOpacity(0.25),
+                      thickness: 25,
+                      cornerStyle: CornerStyle.bothCurve,
+                    ),
+                    minimum: 0,
+                    maximum: 150,
+                    annotations: [
+                      GaugeAnnotation(
+                          widget:Padding(
+                            padding: EdgeInsets.only(left: 25.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(200),
+                                  gradient: RadialGradient(
+                                      radius: 0.15,
+                                      colors: [kPersonalBlue.withOpacity(0.15),kPersonalDarkGrey.withOpacity(0.1)]
+                                  )
+                              ),
+                              height: MediaQuery.of(context).size.height*0.4,
+                              width: MediaQuery.of(context).size.width*0.8,
+                            ),
+                          )
+                      ),
+                    ],
+                    pointers: <GaugePointer>[
+                      NeedlePointer(
+                        value: displayRate,
+                        enableAnimation: true,
+                        needleColor: kPersonalBlue,
+                        needleStartWidth: 1.2,
+                        needleEndWidth: 4.7,
+                        needleLength: 0.65,
+                        knobStyle: KnobStyle(
+                          color: kPersonalBlue,
+                        ),
+                      ),
+                      RangePointer(
+                          value: displayRate,
+                          width: 25,
+                          enableAnimation: true,
+                          color: kPersonalBlue,
+                          cornerStyle: CornerStyle.bothCurve)
+                    ]),
+              ]
+          ),
+          Column(
+              children: [
+                Text(
+                    '${displayRate.round()}',
+                    style: TextStyle(
+                        color: kPersonalWhite,
+                        fontSize: 32,
+                        fontFamily:'OpenSans-Regular',
+                        fontWeight: FontWeight.w600
+                    )
+                ),
+                Text(
+                    'Mbps',
+                    style: TextStyle(
+                        color: kPersonalBlue,
+                        fontSize: 18,
+                        fontFamily: 'OpenSans-Regular'
+                    )
+                )
+              ]
+          ),
+          SizedBox(height: 40),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                  padding: EdgeInsets.only(left: 30),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'download:'.toUpperCase(),
+                          style: TextStyle(
+                              color: kPersonalWhite,
+                              fontSize: 18,
+                              fontFamily:'OpenSans-SemiBold',
+                              fontWeight: FontWeight.w600
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                  downloadRate == 0 ?'-':'${downloadRate.round()} ',
+                                  style: TextStyle(
+                                      color: kPersonalWhite,
+                                      fontSize: 36,
+                                      fontFamily: 'OpenSans-Bold',
+                                      fontWeight: FontWeight.bold
+                                  )
+                              ),
+                              downloadRate == 0 ? Text('') : Padding(
+                                padding: EdgeInsets.only(bottom: 4.5 ),
+                                child: Text(
+                                    'Mbps',
+                                    style: TextStyle(
+                                      color: kPersonalBlue,
+                                      fontSize: 16,
+                                      fontFamily: 'OpenSans-Regular',
+                                    )
+                                ),
+                              )
+                            ]
+                        )
+                      ]
+                  )
+              ),
+              Padding(
+                  padding: EdgeInsets.only(right: 30),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'upload:'.toUpperCase(),
+                          style: TextStyle(
+                              color: kPersonalWhite,
+                              fontSize: 18,
+                              fontFamily: 'OpenSans-SemiBold',
+                              fontWeight: FontWeight.w600
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                  uploadRate == 0 ?'-':'${uploadRate.round()} ',
+                                  style: TextStyle(
+                                      color: kPersonalWhite,
+                                      fontSize: 36,
+                                      fontWeight: FontWeight.bold
+                                  )
+                              ),
+                              uploadRate == 0 ? Text('') : Padding(
+                                padding: EdgeInsets.only(bottom: 4.5 ),
+                                child: Text(
+                                    'Mbps',
+                                    style: TextStyle(
+                                        color: kPersonalBlue,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.normal
+                                    )
+                                ),
+                              )
+                            ]
+                        )
+                      ]
+                  )
+              )
+            ],
+          )
+        ],
+      ),
+    );
 }

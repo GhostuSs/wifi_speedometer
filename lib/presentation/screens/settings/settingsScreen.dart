@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wifi_speed_test/presentation/components/main/bottomNavigationBar/bottomNavBar.dart';
 import 'package:wifi_speed_test/presentation/components/settings/rawCard.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 

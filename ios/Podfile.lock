@@ -11,9 +11,9 @@ PODS:
   - internet_speed_test (0.0.1):
     - Flutter
   - Reachability (3.2)
-  - Toast (4.0.0)
-  - wifi_info_flutter (0.0.1):
+  - shared_preferences (0.0.1):
     - Flutter
+  - Toast (4.0.0)
 
 DEPENDENCIES:
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
@@ -21,7 +21,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - internet_speed_test (from `.symlinks/plugins/internet_speed_test/ios`)
-  - wifi_info_flutter (from `.symlinks/plugins/wifi_info_flutter/ios`)
+  - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
 
 SPEC REPOS:
   trunk:
@@ -39,8 +39,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/fluttertoast/ios"
   internet_speed_test:
     :path: ".symlinks/plugins/internet_speed_test/ios"
-  wifi_info_flutter:
-    :path: ".symlinks/plugins/wifi_info_flutter/ios"
+  shared_preferences:
+    :path: ".symlinks/plugins/shared_preferences/ios"
 
 SPEC CHECKSUMS:
   connectivity_plus: 5f0eb61093bec56935f21a1699dd2758bc895587
@@ -49,8 +49,8 @@ SPEC CHECKSUMS:
   fluttertoast: 6122fa75143e992b1d3470f61000f591a798cc58
   internet_speed_test: ab8c9ed9b7b4747c8ebd3f549bdbfa778655fd68
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  shared_preferences: 5033afbb22d372e15aff8ff766df9021b845f273
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  wifi_info_flutter: 55d4c2469034f5b5c38063ccefa62f708a503a2b
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
+import 'package:wifi_speed_test/presentation/components/main/bottomNavigationBar/bottomNavBar.dart';
 import 'package:wifi_speed_test/presentation/components/test/resultRateCard.dart';
 import 'package:wifi_speed_test/presentation/components/test/resultsScreenAppBar.dart';
 import 'package:wifi_speed_test/presentation/components/test/wifiInfoCard.dart';
@@ -19,23 +20,31 @@ class _ResultScreen extends State<ResultScreen>{
     return Scaffold(
       backgroundColor: kPersonalDarkGrey,
       appBar: appBar(context),
-      body: Column(
+      body: ResultBody()
+    );
+  }
+}
+
+class ResultBody extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Column(
         children: [
           SizedBox(height: 15),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'all finished'.toUpperCase(),
-                style: TextStyle(
-                    color: kPersonalWhite,
-                    fontSize: 18,
-                    fontFamily: 'OpenSans-SemiBold',
-                    fontWeight: FontWeight.w600
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                    'all finished'.toUpperCase(),
+                    style: TextStyle(
+                        color: kPersonalWhite,
+                        fontSize: 18,
+                        fontFamily: 'OpenSans-SemiBold',
+                        fontWeight: FontWeight.w600
+                    )
                 )
-          )
-    ]
-      ),
+              ]
+          ),
           Padding(
             padding: EdgeInsets.all(20),
             child: Row(
@@ -54,8 +63,6 @@ class _ResultScreen extends State<ResultScreen>{
           ),
           WifiInfoCard(),
         ]
-    )
     );
   }
-
 }

@@ -29,10 +29,10 @@ dependencies:
   percent_indicator: ^3.0.1
   fluttertoast: ^8.0.8
   rflutter_alert: ^2.0.4
-  wifi_info_flutter: ^2.0.2
   device_information: ^0.0.4
   provider: ^6.0.0
   dart_ipify: ^1.1.1
+  shared_preferences: ^2.0.8
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -51,9 +51,9 @@ flutter:
   fonts:
     - family: OpenSans
       fonts:
-        - asset: lib/fonts/OpenSans-Regular.ttf
-        - asset: lib/fonts/OpenSans-SemiBold.ttf
-        - asset: lib/fonts/OpenSans-Bold.ttf
+        - asset: assets/fonts/OpenSans-Regular.ttf
+        - asset: assets/fonts/OpenSans-SemiBold.ttf
+        - asset: assets/fonts/OpenSans-Bold.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -62,11 +62,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/tab_test.png
-    - assets/tab_settings.png
-    - assets/tab_history.png
-    - assets/tab_pass.png
-    - assets/test.png
+    - assets/icons/tab_test.png
+    - assets/icons/tab_settings.png
+    - assets/icons//tab_history.png
+    - assets/icons/tab_pass.png
+    - assets/icons/test.png
+    - assets/passwords/passes.txt
+    - assets/passwords/p.txt
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

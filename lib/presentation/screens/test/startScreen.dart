@@ -1,9 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/src/provider.dart';
-import 'package:wifi_info_flutter/wifi_info_flutter.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/components/main/startBtn.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
@@ -21,7 +21,6 @@ class StartScreen extends StatefulWidget {
 class _TestScreen extends State<StartScreen> {
   ConnectivityResult _connectionStatus = ConnectivityResult.none;
   final Connectivity _connectivity = Connectivity();
-  var wifiInfo = WifiInfo();
   var dio = Dio();
   var temp;
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
@@ -88,7 +87,6 @@ class _TestScreen extends State<StartScreen> {
   }
   dataSet() async {
     var suffix = context.read<Data>();
-    suffix.wifi=await wifiInfo.getWifiBSSID() ?? 'kal';
     suffix.ip=await Ipify.ipv4();
     suffix.device=await DeviceInformation.deviceModel;
     final response = await dio.get('http://ip-api.com/json/${context.read<Data>().ip}');
