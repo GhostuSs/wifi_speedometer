@@ -68,6 +68,9 @@ flutter:
     - assets/icons/tab_pass.png
     - assets/icons/test.png
     - assets/passwords/passes.txt
+    - assets/onboarding/feedback.png
+    - assets/onboarding/stats.png
+    - assets/onboarding/wifirouter.png
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
