@@ -60,6 +60,7 @@ Widget fields(IconData icon,String nameOfField,value,last){
                         fit: BoxFit.scaleDown,
                         child: Text(
                           '$nameOfField',
+                          overflow: TextOverflow.fade,
                           style: TextStyle(
                             color: kPersonalLightGrey,
                             fontSize: fontSize,

@@ -11,14 +11,15 @@ class WifiScreen extends StatefulWidget{
 }
 
 class _WifiScreen extends State<WifiScreen> {
+  bool visible=false;
+  bool enabled=true;
+  int passwordPosition=0;
   @override
   Widget build(BuildContext context) {
-    var color = kPersonalLightGrey;
     final height = MediaQuery
         .of(context)
         .size
         .height;
-    int passwordPosition = 0;
     var textFieldController = TextEditingController();
     String pass = '';
     return Scaffold(
@@ -27,7 +28,7 @@ class _WifiScreen extends State<WifiScreen> {
           children: [
             Padding(
               padding: EdgeInsets.only(
-                  top: height * 0.1, bottom: height * 0.05),
+                  top: height * 0.1, bottom: height * 0.04),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -43,23 +44,30 @@ class _WifiScreen extends State<WifiScreen> {
                 ],
               ),
             ),
+            Visibility(
+              visible: visible,
+              child: ResultCard(isUnique:visible,passwordPosition: passwordPosition),
+            ),
             Container(
               child: Padding(
                 padding: EdgeInsets.only(left: 20, right: 20),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          ' Find how often your Wi-Fi password is used',
-                          style: TextStyle(
-                              color: kPersonalLightGrey,
-                              fontFamily: 'OpenSans-Regular',
-                              fontSize: 14
+                    Visibility(
+                      visible: passwordPosition==0,
+                      child: Row(
+                        children: [
+                          Text(
+                            ' Find how often your Wi-Fi password is used',
+                            style: TextStyle(
+                                color: kPersonalLightGrey,
+                                fontFamily: 'OpenSans-Regular',
+                                fontSize: 14
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     SizedBox(height: height * 0.01),
                     Container(
@@ -84,7 +92,8 @@ class _WifiScreen extends State<WifiScreen> {
                           cursorColor: kPersonalBlue,
                           autocorrect: false,
                           onChanged: (str) {
-                            pass = str;
+                              pass = str;
+                              str.isNotEmpty ? enabled=true : enabled=false;
                           },
                         ),
                       ),
@@ -96,24 +105,33 @@ class _WifiScreen extends State<WifiScreen> {
           ],
         ),
         bottomSheet: Container(
-          color: kPersonalDarkGrey,
+          decoration: BoxDecoration(
+              color: kPersonalDarkGrey,
+              border: Border(top: BorderSide(color: kPersonalDarkGrey,width: 3))
+          ),
           child: Padding(
-            padding: EdgeInsets.only(left: 15, right: 15),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+            padding: EdgeInsets.only(left: 15, right: 15,bottom: height*0.03),
+            child: Stack(
               children: [
                 Container(
                     width: double.infinity,
                     height: 56,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: textFieldController.text.isEmpty ? kPersonalLightGrey : kPersonalBlue
+                        color:kPersonalBlue
                     ),
-                    child: TextButton(onPressed: () async {
-                      String fileText = await rootBundle.loadString(
-                          'assets/passwords/passes.txt');
-                      passwordPosition = compare(fileText, pass);
-                      textFieldController.clear();
+                    child: TextButton(
+                        onPressed: () async {
+                          String fileText = await rootBundle.loadString(
+                              'assets/passwords/passes.txt');
+                          enabled&&pass.isNotEmpty?  setState((){
+                        passwordPosition=0;
+                        visible=false;
+                        passwordPosition = compare(fileText, pass,passwordPosition);
+                        textFieldController.clear();
+                        visible=checkPosition(passwordPosition);
+                      })
+                      : enabled=false;
                     },
                         child: Text(
                           'Find out'.toUpperCase(),
@@ -133,8 +151,9 @@ class _WifiScreen extends State<WifiScreen> {
         )
     );
   }
-  int compare(String fileText, String compareString) {
+  int compare(String fileText, String compareString,int counter) {
     String basis = '';
+    bool flag=false;
     int rowNum = 0;
     for (int i = 0; i < fileText.length; i++) {
       if (fileText[i] != '\n') {
@@ -142,12 +161,63 @@ class _WifiScreen extends State<WifiScreen> {
       } else {
         rowNum++;
         if (compareString == basis) {
+          counter=rowNum;
+          flag=true;
           break;
-        } else {
+        }
+        else
+          {
           basis = '';
         }
       }
     }
-    return rowNum;
+    if(rowNum==4800 && flag!=true) counter=-1;
+    return counter;
+  }
+  bool checkPosition(int pos){
+    bool flag=false;
+    pos>0 ? flag=true : flag=false;
+    if(pos== -1)flag=true;
+    return flag;
+  }
+}
+
+class ResultCard extends StatelessWidget {
+  final isUnique;
+  final passwordPosition;
+  ResultCard({required this.isUnique, this.passwordPosition});
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 10),
+        child: Container(
+          width: double.infinity,
+          height: 57,
+          decoration: BoxDecoration(
+              color: isUnique&&passwordPosition!=-1
+                  ? Color(0xFFFF453A)
+                  : Color(0xFF32D74B),
+              borderRadius: BorderRadius.circular(10)
+          ),
+          child: Center(
+            child: Text(
+              isUnique && passwordPosition!=-1
+                  ? 'Your password is the $passwordPosition-th by the \nnumber of uses'
+                  :'Your password is unique!',
+              overflow: TextOverflow.fade,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 18,
+                  fontFamily: 'OpenSans-Regualar',
+                  fontWeight: FontWeight.w600,
+                  color: kPersonalWhite
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

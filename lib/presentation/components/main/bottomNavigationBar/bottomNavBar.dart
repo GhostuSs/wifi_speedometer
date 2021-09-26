@@ -11,31 +11,41 @@ CupertinoTabBar btmNavBar(int selectedIndex) {
     currentIndex: selectedIndex,
     items: [
       BottomNavigationBarItem(
-          icon: Image.asset('assets/test.png'),
+          icon: Image.asset('assets/icons/test.png'),
           label: 'Test',
           activeIcon: Image.asset(
-            'assets/test.png',
+            'assets/icons/test.png',
+            filterQuality: FilterQuality.high,
             color: kPersonalBlue,
-          )),
+          )
+      ),
       BottomNavigationBarItem(
-          icon: Image.asset('assets/tab_history.png'),
+          icon: Image.asset(
+            'assets/icons/tab_history.png',
+            filterQuality: FilterQuality.high),
           label: 'History',
           activeIcon: Image.asset(
-            'assets/tab_history.png',
+            'assets/icons/tab_history.png',
             color: kPersonalBlue,
           )),
       BottomNavigationBarItem(
-          icon: Image.asset('assets/tab_pass.png'),
+          icon: Image.asset(
+              'assets/icons/tab_pass.png',
+            filterQuality: FilterQuality.high,
+          ),
           label: 'Pass',
           activeIcon: Image.asset(
-            'assets/tab_pass.png',
+            'assets/icons/tab_pass.png',
             color: kPersonalBlue,
           )),
       BottomNavigationBarItem(
-          icon: Image.asset('assets/tab_settings.png'),
+          icon: Image.asset(
+              'assets/icons/tab_settings.png',
+            filterQuality: FilterQuality.high,
+          ),
           label: 'Settings',
           activeIcon: Image.asset(
-            'assets/tab_settings.png',
+            'assets/icons/tab_settings.png',
             color: kPersonalBlue,
           )),
     ],

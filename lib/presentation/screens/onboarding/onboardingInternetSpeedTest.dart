@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wifi_speed_test/presentation/components/onboarding/ratingDialog.dart';
 import 'package:wifi_speed_test/presentation/components/onboarding/sliderTile.dart';
-import 'package:wifi_speed_test/presentation/components/test/resultsScreenAppBar.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
-
 import 'data.dart';
 void main()=>runApp(MaterialApp(home:OnBoardingScreen()));
 class OnBoardingScreen extends StatefulWidget{
@@ -25,9 +24,9 @@ class _OnBoardingScreen extends State<OnBoardingScreen> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPersonalBlack,
+      backgroundColor: kPersonalDarkGrey,
       appBar: AppBar(
-        backgroundColor: kPersonalBlack,
+        backgroundColor: kPersonalDarkGrey,
         elevation: 0.0,
         leading: Padding(
           padding: EdgeInsets.all(20.0),
@@ -56,7 +55,8 @@ class _OnBoardingScreen extends State<OnBoardingScreen> {
           bottomSheet: currentIndex != slides.length ? btmSheet(false,'Next',onNext) : btmSheet(true,'Continue',onContinue),
     );
   }
-  void onNext() {
+  Future<void> onNext() async {
+    if (currentIndex==1) await showDialog(context: context,builder: (context)=>RateMyApp());
     setState(() {
       currentIndex++;
       pageController.animateToPage(
@@ -70,10 +70,11 @@ class _OnBoardingScreen extends State<OnBoardingScreen> {
 Widget btmSheet(bool isLast,String text,onPressed){
     return Container(
         padding: isLast
-            ? EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.09)
-            : EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.12),
+            ? EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.05)
+            : EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.08),
         decoration: BoxDecoration(
-          color: kPersonalBlack,
+          border: Border(top: BorderSide(color: kPersonalDarkGrey,width: 3.0)),
+          color: kPersonalDarkGrey,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -84,9 +85,8 @@ Widget btmSheet(bool isLast,String text,onPressed){
                 for(int i=0;i<slides.length;i++) currentIndex == i ? pageIndexIndicator(true) : pageIndexIndicator(false)
               ],
             ),
-            SizedBox(height: 10),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              padding: EdgeInsets.symmetric(horizontal: 20.0,vertical:10.0),
               child: Container(
                 width: double.infinity,
                 height: 56,
@@ -107,7 +107,6 @@ Widget btmSheet(bool isLast,String text,onPressed){
                   onPressed:onPressed),
                 ),
               ),
-            SizedBox(height: 15),
             isLast
                 ? Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -182,6 +181,5 @@ Widget pageIndexIndicator(bool isCurrentPage) {
     );
   }
 }
-
 
 

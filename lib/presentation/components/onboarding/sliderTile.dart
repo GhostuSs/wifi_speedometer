@@ -19,7 +19,10 @@ class SliderTile extends StatelessWidget{
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(imageAssetPath),
+            Image.asset(
+              imageAssetPath,
+              filterQuality: FilterQuality.high
+            ),
             Text(
               title,
               textAlign: TextAlign.justify,
