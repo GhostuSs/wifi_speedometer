@@ -4,7 +4,7 @@ import 'package:provider/src/provider.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 
-PreferredSizeWidget appBar(BuildContext context) {
+PreferredSizeWidget appBarResults(BuildContext context) {
   return AppBar(
     elevation: 0.0,
     toolbarHeight: 80,

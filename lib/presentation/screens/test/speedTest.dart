@@ -4,7 +4,6 @@ import 'package:internet_speed_test/internet_speed_test.dart';
 import 'package:internet_speed_test/callbacks_enum.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
-import 'package:wifi_speed_test/presentation/components/main/bottomNavigationBar/bottomNavBar.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/testServer.dart';
 import 'package:provider/provider.dart';

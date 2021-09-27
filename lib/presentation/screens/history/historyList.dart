@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
+import 'package:wifi_speed_test/presentation/components/history/appBarHistory.dart';
 import 'package:wifi_speed_test/presentation/components/test/resultRateCard.dart';
-import 'package:wifi_speed_test/presentation/components/test/resultsScreenAppBar.dart';
 import 'package:wifi_speed_test/presentation/components/test/wifiInfoCard.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 
-class ResultScreen extends StatefulWidget{
+class HistoryScreen extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     return _ResultScreen();
   }
 }
 
-class _ResultScreen extends State<ResultScreen>{
+class _ResultScreen extends State<HistoryScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kDarkGrey,
-      appBar: appBarResults(context),
-      body: ResultBody()
+        backgroundColor: kDarkGrey,
+        appBar: appBarHistory(context),
+        body: HistoryBody()
     );
   }
 }
 
-class ResultBody extends StatelessWidget{
+class HistoryBody extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Column(
