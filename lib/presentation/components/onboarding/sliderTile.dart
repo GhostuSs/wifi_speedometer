@@ -15,6 +15,7 @@ class SliderTile extends StatelessWidget{
   Widget build(BuildContext context) {
     return Center(
       child: Container(
+        color: kDarkGrey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

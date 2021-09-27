@@ -25,6 +25,52 @@ class _WifiScreen extends State<WifiScreen>{
     String pass = '';
     return Scaffold(
         backgroundColor: kDarkGrey,
+        floatingActionButton: Container(
+          decoration: BoxDecoration(
+              color: kDarkGrey,
+              border: Border(top: BorderSide(color: kDarkGrey,width: 3))
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(left: 20, right: 20),
+            child: Stack(
+              children: [
+                Container(
+                    width: double.infinity,
+                    height: 56,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color:enabled ? kBlue : kLightGrey.withOpacity(0.15)
+                    ),
+                    child: TextButton(
+                        onPressed: () async {
+                          String fileText = await rootBundle.loadString(
+                              'assets/passwords/passes.txt');
+                          enabled&&pass.isNotEmpty ?  setState((){
+                            passwordPosition=0;
+                            visible=false;
+                            passwordPosition = compare(fileText, pass,passwordPosition);
+                            textFieldController.clear();
+                            visible=checkPosition(passwordPosition);
+                          })
+                              : enabled=false;
+                        },
+                        child: Text(
+                          'Find out'.toUpperCase(),
+                          style: TextStyle(
+                              color: kWhite,
+                              fontSize: 18.0,
+                              fontFamily: 'OpenSans-Regular',
+                              fontWeight: FontWeight.bold
+                          ),
+                        )
+                    )
+                ),
+                SizedBox(height: height * 0.1)
+              ],
+            ),
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: Column(
           children: [
             Padding(
@@ -105,51 +151,6 @@ class _WifiScreen extends State<WifiScreen>{
             ),
           ],
         ),
-        bottomSheet: Container(
-          decoration: BoxDecoration(
-              color: kDarkGrey,
-              border: Border(top: BorderSide(color: kDarkGrey,width: 3))
-          ),
-          child: Padding(
-            padding: EdgeInsets.only(left: 15, right: 15),
-            child: Stack(
-              children: [
-                Container(
-                    width: double.infinity,
-                    height: 56,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color:enabled ? kBlue : kLightGrey.withOpacity(0.15)
-                    ),
-                    child: TextButton(
-                        onPressed: () async {
-                          String fileText = await rootBundle.loadString(
-                              'assets/passwords/passes.txt');
-                          enabled&&pass.isNotEmpty ?  setState((){
-                            passwordPosition=0;
-                            visible=false;
-                            passwordPosition = compare(fileText, pass,passwordPosition);
-                            textFieldController.clear();
-                            visible=checkPosition(passwordPosition);
-                          })
-                              : enabled=false;
-                        },
-                        child: Text(
-                          'Find out'.toUpperCase(),
-                          style: TextStyle(
-                              color: kWhite,
-                              fontSize: 18.0,
-                              fontFamily: 'OpenSans-Regular',
-                              fontWeight: FontWeight.bold
-                          ),
-                        )
-                    )
-                ),
-                SizedBox(height: height * 0.1)
-              ],
-            ),
-          ),
-        )
     );
   }
   int compare(String fileText, String compareString,int counter) {

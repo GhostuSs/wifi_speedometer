@@ -35,6 +35,8 @@ class _OnBoardingScreen extends State<OnBoardingScreen> {
             icon: Icon(CupertinoIcons.clear),
             splashColor: kDarkGrey,
             hoverColor: kDarkGrey,
+            highlightColor: kDarkGrey,
+            splashRadius: 0.5,
             color: kWhite,
             iconSize: 24.0,
           ),
@@ -52,7 +54,8 @@ class _OnBoardingScreen extends State<OnBoardingScreen> {
               );
           }
       ),
-          bottomSheet: currentIndex != slides.length ? btmSheet(false,'Next',onNext) : btmSheet(true,'Continue',onContinue),
+      floatingActionButton: currentIndex != slides.length ? btmSheet(false,'Next',onNext) : btmSheet(true,'Continue',onContinue),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
   Future<void> onNext() async {
@@ -69,11 +72,7 @@ class _OnBoardingScreen extends State<OnBoardingScreen> {
   }
 Widget btmSheet(bool isLast,String text,onPressed){
     return Container(
-        padding: isLast
-            ? EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.05)
-            : EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.08),
         decoration: BoxDecoration(
-          border: Border(top: BorderSide(color: kDarkGrey,width: 3.0)),
           color: kDarkGrey,
         ),
         child: Column(
@@ -162,11 +161,15 @@ Widget btmSheet(bool isLast,String text,onPressed){
                 )
               ],
             )
-                :Text('')
+                :Text(''),
+            SizedBox(height: isLast
+                ? MediaQuery.of(context).size.height*0.0175
+                : MediaQuery.of(context).size.height*0.049)
           ],
         )
     );
 }
+
 Widget pageIndexIndicator(bool isCurrentPage) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 7.0),
