@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:wifi_speed_test/presentation/components/history/appBarHistory.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wifi_speed_test/presentation/screens/history/dataHistory.dart';
 class HistoryScreen extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
