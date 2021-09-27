@@ -12,13 +12,11 @@ class ResultsRateCard extends StatelessWidget{
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    return FittedBox(
-      fit: BoxFit.scaleDown,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 5.0,vertical: 5.0),
-        child: Container(
-          //width: MediaQuery.of(context).size.width*0.44,
-          //height: MediaQuery.of(context).size.height*0.12,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 5.0,vertical: 5.0),
+      child: Container(
+        width: MediaQuery.of(context).size.width*0.45,
+        height: MediaQuery.of(context).size.height*0.125,
           decoration: BoxDecoration(
             color:kLightGrey.withOpacity(0.15),
             borderRadius: BorderRadius.circular(10.0),
@@ -32,23 +30,17 @@ class ResultsRateCard extends StatelessWidget{
                   padding: EdgeInsets.only(top: 10.0),
                   child:
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       keyVal==Keys.download
-                          ? FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                            'download:'.toUpperCase(),
-                            style: _textStyle()
-                        ),
+                          ? Text(
+                          'download:'.toUpperCase(),
+                          style: _textStyle()
                       )
-                          : FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Text(
-                              '  upload:'.toUpperCase(),
-                              style: _textStyle()
-                          )
+                          : Text(
+                          '  upload:'.toUpperCase(),
+                          style: _textStyle()
                       ),
                       Icon(
                         keyVal==Keys.download
@@ -94,8 +86,7 @@ class ResultsRateCard extends StatelessWidget{
                 ))
               ],
             ),
-          ),
-        ),
+          )
       ),
     );
   }

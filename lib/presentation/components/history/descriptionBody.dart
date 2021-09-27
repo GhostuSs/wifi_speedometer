@@ -1,33 +1,18 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/components/test/resultRateCard.dart';
 import 'package:wifi_speed_test/presentation/components/test/wifiInfoCard.dart';
-import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 
-class ResultBody extends StatelessWidget{
+class DescriptionBody extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Column(
         children: [
           SizedBox(height: 15),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                    'all finished'.toUpperCase(),
-                    style: TextStyle(
-                        color: kWhite,
-                        fontSize: 18,
-                        fontFamily: 'OpenSans-SemiBold',
-                        fontWeight: FontWeight.w600
-                    )
-                )
-              ]
-          ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal:height*0.01,vertical: height*0.05),
+            padding: EdgeInsets.all(height*0.01),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

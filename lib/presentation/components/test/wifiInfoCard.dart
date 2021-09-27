@@ -8,8 +8,9 @@ class WifiInfoCard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     final suffix=context.read<Data>();
+    var height = MediaQuery.of(context).size.height;
     return Padding(
-        padding: EdgeInsets.only(left: 20,right: 20),
+        padding: EdgeInsets.symmetric(horizontal: height*0.01),
         child: Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -56,17 +57,14 @@ Widget fields(IconData icon,String nameOfField,value,last){
                   ),//Icon
                   Padding(
                       padding: EdgeInsets.only(left: 10),
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          '$nameOfField',
-                          overflow: TextOverflow.fade,
-                          style: TextStyle(
-                            color: kLightGrey,
-                            fontSize: fontSize,
-                            fontFamily: 'OpenSans-Regular',
-                            fontWeight: FontWeight.normal,
-                          ),
+                      child: Text(
+                        '$nameOfField',
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: kLightGrey,
+                          fontSize: fontSize,
+                          fontFamily: 'OpenSans-Regular',
+                          fontWeight: FontWeight.normal,
                         ),
                       )
                   ),

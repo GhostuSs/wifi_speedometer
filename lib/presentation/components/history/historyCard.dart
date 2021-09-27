@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
@@ -14,7 +13,6 @@ class HistoryCard extends StatefulWidget{
   }
 }
 class _HistoryCard extends State<HistoryCard>{
-  DateTime dateTime =DateTime.now();
   @override
   Widget build(BuildContext context) {;
   return Padding(
