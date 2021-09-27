@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/src/provider.dart';
-import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/components/history/appBarHistory.dart';
-import 'package:wifi_speed_test/presentation/components/test/resultRateCard.dart';
-import 'package:wifi_speed_test/presentation/components/test/wifiInfoCard.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wifi_speed_test/presentation/screens/history/dataHistory.dart';
 class HistoryScreen extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -14,6 +11,12 @@ class HistoryScreen extends StatefulWidget{
 }
 
 class _ResultScreen extends State<HistoryScreen>{
+  @override
+  Future<void> initState() async {
+    super.initState();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,38 +32,7 @@ class HistoryBody extends StatelessWidget{
   Widget build(BuildContext context) {
     return Column(
         children: [
-          SizedBox(height: 15),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                    'all finished'.toUpperCase(),
-                    style: TextStyle(
-                        color: kWhite,
-                        fontSize: 18,
-                        fontFamily: 'OpenSans-SemiBold',
-                        fontWeight: FontWeight.w600
-                    )
-                )
-              ]
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ResultsRateCard(
-                    Keys.download,
-                    context.read<Data>().downloadRate
-                ),
-                ResultsRateCard(
-                    Keys.upload,
-                    context.read<Data>().uploadRate
-                ),
-              ],
-            ),
-          ),
-          WifiInfoCard(),
+          Text('123',style: TextStyle(color: kWhite),)
         ]
     );
   }

@@ -6,6 +6,7 @@ import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dar
 
 PreferredSizeWidget appBarHistory(BuildContext context) {
   return AppBar(
+    automaticallyImplyLeading: false,
     elevation: 0.0,
     toolbarHeight: 80,
     backgroundColor: kDarkGrey,
@@ -28,13 +29,13 @@ PreferredSizeWidget appBarHistory(BuildContext context) {
                 builder: (context) => Theme(
                   child: CupertinoAlertDialog(
                     title: Text(
-                      "Delete result?",
+                      "Clear history?",
                       style: TextStyle(
                           fontFamily: 'OpenSans-SemiBold',
                           color: kWhite),
                     ),
                     content: Text(
-                      "Are you sure you want to delete this result?",
+                      "Are you sure you want to delete this results?",
                       style: TextStyle(
                           color: kWhite,
                           fontFamily: 'OpenSans-Regular'),
