@@ -1,4 +1,5 @@
 class Data{
+  String dateTime='';
   int downloadRate=0;
   int uploadRate=0;
   String isp='';
@@ -7,6 +8,7 @@ class Data{
   String device='';
 
   removeData(){
+    dateTime='';
     downloadRate=0;
     uploadRate=0;
     isp='';

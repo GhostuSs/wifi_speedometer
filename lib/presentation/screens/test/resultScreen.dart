@@ -15,6 +15,13 @@ class ResultScreen extends StatefulWidget{
 
 class _ResultScreen extends State<ResultScreen>{
   @override
+  void initState() {
+    DateTime dateTime = DateTime.now();
+    String currentDateTime='${dateTime.day}.'+(dateTime.month<DateTime.october?'0':'')+'${dateTime.month}.${dateTime.year}, ${dateTime.hour}:${dateTime.minute}';
+    context.read<Data>().dateTime=currentDateTime;
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkGrey,
