@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
-
+import 'package:wifi_speed_test/presentation/screens/history/description.dart';
 class HistoryCard extends StatefulWidget{
   final index;
   HistoryCard({required int this.index});
@@ -31,7 +31,7 @@ class _HistoryCard extends State<HistoryCard>{
           hoverColor: kBlack,
           highlightColor: kBlack,
           onTap: (){
-            Navigator.pushNamed(context, '/results');
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>DescriptionScreen()));
           },
           child: Column(
             children: [
