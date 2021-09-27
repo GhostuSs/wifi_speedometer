@@ -13,7 +13,7 @@ class WifiInfoCard extends StatelessWidget{
         child: Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color:kPersonalLightGrey.withOpacity(0.15),
+        color:kLightGrey.withOpacity(0.15),
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Padding(
@@ -50,7 +50,7 @@ Widget fields(IconData icon,String nameOfField,value,last){
                       padding: EdgeInsets.only(bottom: 1),
                       child: Icon(
                         icon,
-                        color: kPersonalLightGrey,
+                        color: kLightGrey,
                         size: iconSize,
                       )
                   ),//Icon
@@ -62,7 +62,7 @@ Widget fields(IconData icon,String nameOfField,value,last){
                           '$nameOfField',
                           overflow: TextOverflow.fade,
                           style: TextStyle(
-                            color: kPersonalLightGrey,
+                            color: kLightGrey,
                             fontSize: fontSize,
                             fontFamily: 'OpenSans-Regular',
                             fontWeight: FontWeight.normal,
@@ -76,7 +76,7 @@ Widget fields(IconData icon,String nameOfField,value,last){
                     child: Text(
                       '$value',
                       style: TextStyle(
-                          color: kPersonalWhite,
+                          color: kWhite,
                           fontWeight: FontWeight.normal,
                           fontFamily: 'OpenSans-Regular',
                           fontSize: fontSize
@@ -91,7 +91,7 @@ Widget fields(IconData icon,String nameOfField,value,last){
               ? Text('')
               : Divider(
             thickness: 1.0,
-            color: kPersonalLightGrey,
+            color: kLightGrey,
           )
         ],
       ),

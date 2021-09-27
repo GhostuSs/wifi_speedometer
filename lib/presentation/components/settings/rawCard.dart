@@ -6,14 +6,14 @@ Widget rawCard(String text,onPressed){
       padding: EdgeInsets.only(bottom: 15),
       child: InkWell(
         borderRadius: BorderRadius.circular(10.0),
-        splashColor: kPersonalBlack,
-        highlightColor: kPersonalBlack,
+        splashColor: kBlack,
+        highlightColor: kBlack,
         child: Container(
           width: double.infinity,
           height: 65,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: kPersonalLightGrey.withOpacity(0.15)
+              color: kLightGrey.withOpacity(0.15)
           ),
           child: Row(
             children: [
@@ -22,7 +22,7 @@ Widget rawCard(String text,onPressed){
                   child: Text(
                       '$text',
                       style: TextStyle(
-                          color: kPersonalWhite,
+                          color: kWhite,
                           fontWeight: FontWeight.w600,
                           fontSize: 21.0,
                           fontFamily: 'OpenSans-SemiBold'
@@ -34,7 +34,7 @@ Widget rawCard(String text,onPressed){
                 padding: EdgeInsets.only(right: 15),
                 child: Icon(
                     Icons.arrow_forward_ios,
-                    color: kPersonalWhite,
+                    color: kWhite,
                   )
               )
             ],

@@ -29,7 +29,7 @@ class RateMyApp extends StatelessWidget {
                     fontFamily: 'OpenSans-Bold',
                     fontWeight: FontWeight.bold,
                     fontSize: 22,
-                    color: kPersonalWhite),
+                    color: kWhite),
               ),
             ),
           ],
@@ -41,7 +41,7 @@ class RateMyApp extends StatelessWidget {
           style: TextStyle(
               fontFamily: 'OpenSans-Regular',
               fontSize: 13,
-              color: kPersonalWhite),
+              color: kWhite),
         ),
         actions: [
           CupertinoDialogAction(
@@ -54,7 +54,7 @@ class RateMyApp extends StatelessWidget {
                     child: Icon(
                       Icons.star_rate_sharp,
                       size: 30.0,
-                      color: kPersonalBlue,
+                      color: kBlue,
                     )),
               )),
           CupertinoDialogAction(
@@ -63,7 +63,7 @@ class RateMyApp extends StatelessWidget {
                 child: Text(
                   'Not Now',
                   style: TextStyle(
-                      color: kPersonalBlue,
+                      color: kBlue,
                       fontSize: 17.0,
                       fontFamily: 'OpenSans-Bold',
                       fontWeight: FontWeight.bold),

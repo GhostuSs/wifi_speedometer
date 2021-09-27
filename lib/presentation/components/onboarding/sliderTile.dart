@@ -3,7 +3,6 @@ import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dar
 
 class SliderTile extends StatelessWidget{
   final imageAssetPath,title,desc;
-  var quitEnabled;
   SliderTile(
       {
         required this.imageAssetPath,
@@ -31,7 +30,7 @@ class SliderTile extends StatelessWidget{
                   fontWeight: FontWeight.w600,
                   fontSize: 25,
                   fontFamily: 'OpenSans-SemiBold',
-                  color: kPersonalWhite
+                  color: kWhite
               ),
             ),
             SizedBox(height: 12),
@@ -45,7 +44,7 @@ class SliderTile extends StatelessWidget{
                         fontWeight: FontWeight.w600,
                         fontSize: 16,
                         fontFamily: 'OpenSans-SemiBold',
-                        color: kPersonalWhite
+                        color: kWhite
                     )
                 )),
             SizedBox(height: MediaQuery.of(context).size.height*0.2)

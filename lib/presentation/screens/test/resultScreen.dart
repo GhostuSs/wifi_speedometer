@@ -18,7 +18,7 @@ class _ResultScreen extends State<ResultScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPersonalDarkGrey,
+      backgroundColor: kDarkGrey,
       appBar: appBar(context),
       body: ResultBody()
     );
@@ -37,7 +37,7 @@ class ResultBody extends StatelessWidget{
                 Text(
                     'all finished'.toUpperCase(),
                     style: TextStyle(
-                        color: kPersonalWhite,
+                        color: kWhite,
                         fontSize: 18,
                         fontFamily: 'OpenSans-SemiBold',
                         fontWeight: FontWeight.w600

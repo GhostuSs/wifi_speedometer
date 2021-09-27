@@ -5,9 +5,9 @@ import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dar
 
 CupertinoTabBar btmNavBar(int selectedIndex) {
   return CupertinoTabBar(
-    backgroundColor: kPersonalBlack,
-    activeColor: kPersonalBlue,
-    inactiveColor: kPersonalLightGrey,
+    backgroundColor: kBlack,
+    activeColor: kBlue,
+    inactiveColor: kLightGrey,
     currentIndex: selectedIndex,
     items: [
       BottomNavigationBarItem(
@@ -16,7 +16,7 @@ CupertinoTabBar btmNavBar(int selectedIndex) {
           activeIcon: Image.asset(
             'assets/icons/test.png',
             filterQuality: FilterQuality.high,
-            color: kPersonalBlue,
+            color: kBlue,
           )
       ),
       BottomNavigationBarItem(
@@ -26,7 +26,7 @@ CupertinoTabBar btmNavBar(int selectedIndex) {
           label: 'History',
           activeIcon: Image.asset(
             'assets/icons/tab_history.png',
-            color: kPersonalBlue,
+            color: kBlue,
           )),
       BottomNavigationBarItem(
           icon: Image.asset(
@@ -36,7 +36,7 @@ CupertinoTabBar btmNavBar(int selectedIndex) {
           label: 'Pass',
           activeIcon: Image.asset(
             'assets/icons/tab_pass.png',
-            color: kPersonalBlue,
+            color: kBlue,
           )),
       BottomNavigationBarItem(
           icon: Image.asset(
@@ -46,7 +46,7 @@ CupertinoTabBar btmNavBar(int selectedIndex) {
           label: 'Settings',
           activeIcon: Image.asset(
             'assets/icons/tab_settings.png',
-            color: kPersonalBlue,
+            color: kBlue,
           )),
     ],
   );

@@ -8,32 +8,32 @@ PreferredSizeWidget appBar(BuildContext context) {
   return AppBar(
     elevation: 0.0,
     toolbarHeight: 80,
-    backgroundColor: kPersonalDarkGrey,
+    backgroundColor: kDarkGrey,
     leading: Padding(
       padding: EdgeInsets.only(left: 10),
       child: IconButton(
-        highlightColor: kPersonalDarkGrey,
-        splashColor: kPersonalDarkGrey,
+        highlightColor: kDarkGrey,
+        splashColor: kDarkGrey,
         onPressed: () {
           Navigator.pushNamed(context, '/');
         },
         icon: Icon(Icons.arrow_back_ios),
-        color: kPersonalWhite,
+        color: kWhite,
         iconSize: 28.0,
       ),
     ),
     title: Text(
       'Result',
       style: TextStyle(
-          color: kPersonalWhite,
+          color: kWhite,
           fontSize: 28.0,
           fontFamily: 'OpenSans-SemiBold',
           fontWeight: FontWeight.w600),
     ),
     actions: [
       IconButton(
-          highlightColor: kPersonalDarkGrey,
-          splashColor: kPersonalDarkGrey,
+          highlightColor: kDarkGrey,
+          splashColor: kDarkGrey,
           onPressed: () {
             showCupertinoDialog(
                 barrierDismissible: true,
@@ -44,12 +44,12 @@ PreferredSizeWidget appBar(BuildContext context) {
                     "Delete result?",
                     style: TextStyle(
                         fontFamily: 'OpenSans-SemiBold',
-                        color: kPersonalWhite),
+                        color: kWhite),
                   ),
                   content: Text(
                     "Are you sure you want to delete this result?",
                     style: TextStyle(
-                        color: kPersonalWhite,
+                        color: kWhite,
                         fontFamily: 'OpenSans-Regular'),
                   ),
                   actions: <Widget>[
@@ -57,7 +57,7 @@ PreferredSizeWidget appBar(BuildContext context) {
                       child: Text(
                         "No",
                         style: TextStyle(
-                            color: kPersonalBlue,
+                            color: kBlue,
                             fontFamily: 'OpenSans-Regular'),
                       ),
                       onPressed: (){
@@ -70,7 +70,7 @@ PreferredSizeWidget appBar(BuildContext context) {
                         "Yes",
                         style: TextStyle(
                             fontFamily: 'OpenSans-SemiBold',
-                            color: kPersonalBlue),
+                            color: kBlue),
                       ),
                       onPressed: (){
                         context.read<Data>().removeData();

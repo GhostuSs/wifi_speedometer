@@ -24,7 +24,7 @@ class _HomePage extends State<HomePage> {
       SettingsScreen()
     ];
     return CupertinoTabScaffold(
-      backgroundColor: kPersonalBlue,
+      backgroundColor: kBlue,
       tabBar: btmNavBar(_selectedIndex),
       tabBuilder: (BuildContext context, _selectedIndex) {
         return pages.elementAt(_selectedIndex);

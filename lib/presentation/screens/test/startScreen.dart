@@ -62,7 +62,7 @@ class _TestScreen extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPersonalDarkGrey,
+      backgroundColor: kDarkGrey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0.0,
@@ -74,7 +74,7 @@ class _TestScreen extends State<StartScreen> {
             fontWeight: FontWeight.w600
           )
         ),
-        backgroundColor: kPersonalDarkGrey,
+        backgroundColor: kDarkGrey,
       ),
       body: Center(
           child: _connectionStatus != ConnectivityResult.none  ? StartButton(onPressed: (){

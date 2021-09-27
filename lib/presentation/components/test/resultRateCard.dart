@@ -20,7 +20,7 @@ class ResultsRateCard extends StatelessWidget{
           //width: MediaQuery.of(context).size.width*0.44,
           //height: MediaQuery.of(context).size.height*0.12,
           decoration: BoxDecoration(
-            color:kPersonalLightGrey.withOpacity(0.15),
+            color:kLightGrey.withOpacity(0.15),
             borderRadius: BorderRadius.circular(10.0),
           ),
           child: Padding(
@@ -55,7 +55,7 @@ class ResultsRateCard extends StatelessWidget{
                             ? Icons.keyboard_arrow_down_rounded
                             : Icons.keyboard_arrow_up_rounded,
                         size: 38.0,
-                        color: kPersonalLightGrey,
+                        color: kLightGrey,
                       )
                     ],
                   ),//Download/upload title
@@ -69,7 +69,7 @@ class ResultsRateCard extends StatelessWidget{
                       child: Text(
                         '$value',
                         style: TextStyle(
-                            color: kPersonalWhite,
+                            color: kWhite,
                             fontFamily: 'OpenSans-SemiBold',
                             fontWeight: FontWeight.w600,
                             fontSize: 36.0
@@ -83,7 +83,7 @@ class ResultsRateCard extends StatelessWidget{
                           child: Text(
                             'Mpbs',
                             style: TextStyle(
-                                color: kPersonalBlue,
+                                color: kBlue,
                                 fontFamily: 'OpenSans-Regular',
                                 fontSize: 18.0
                             ),
@@ -101,7 +101,7 @@ class ResultsRateCard extends StatelessWidget{
   }
 TextStyle _textStyle(){
     return TextStyle(
-        color: kPersonalLightGrey,
+        color: kLightGrey,
         fontFamily: 'OpenSans-Regular',
         fontSize: 20.0
     );

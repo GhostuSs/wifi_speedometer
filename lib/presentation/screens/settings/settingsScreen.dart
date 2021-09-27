@@ -14,7 +14,7 @@ class _SettingsScreen extends State<SettingsScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPersonalDarkGrey,
+      backgroundColor: kDarkGrey,
       body: Padding(
         padding: EdgeInsets.only(left: 20,right: 20),
         child: Column(
@@ -28,7 +28,7 @@ class _SettingsScreen extends State<SettingsScreen>{
                 Text(
                   'Settings',
                   style: TextStyle(
-                      color: kPersonalWhite,
+                      color: kWhite,
                       fontSize: 32,
                       fontFamily: 'OpenSans-SemiBold',
                       fontWeight: FontWeight.w600

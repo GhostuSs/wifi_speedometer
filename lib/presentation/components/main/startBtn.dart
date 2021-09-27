@@ -35,7 +35,7 @@ class StartButton extends StatelessWidget {
           ),
           boxShadow: [
         BoxShadow(
-          color: kPersonalBlue.withOpacity(0.4),
+          color: kBlue.withOpacity(0.4),
           offset: Offset(0.0, 0.0),
           blurRadius: 20.0,
           spreadRadius: 1.5
@@ -47,11 +47,11 @@ class StartButton extends StatelessWidget {
             onTap: onPressed,
             borderRadius: BorderRadius.circular(100.0),
             splashColor: Color(0xFF3498CB),
-            highlightColor: kPersonalBlack,
+            highlightColor: kBlack,
             child: Center(
               child: Text('start'.toUpperCase(),
                 style: TextStyle(
-                  color: kPersonalWhite,
+                  color: kWhite,
                   fontFamily: 'OpenSans-Regular',
                   fontWeight: FontWeight.bold,
                   fontSize: 32.0

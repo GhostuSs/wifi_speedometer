@@ -99,7 +99,7 @@ class _SpeedTestState extends State<SpeedTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPersonalDarkGrey,
+      backgroundColor: kDarkGrey,
       body: body(),
     );
   }
@@ -110,7 +110,7 @@ class _SpeedTestState extends State<SpeedTest> {
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.red,
-        textColor: kPersonalWhite,
+        textColor: kWhite,
         fontSize: 16.0);
   }
   Widget body()=>Center(
@@ -125,7 +125,7 @@ class _SpeedTestState extends State<SpeedTest> {
                     showLabels: false,
                     showTicks: false,
                     axisLineStyle: AxisLineStyle(
-                      color: kPersonalLightGrey.withOpacity(0.25),
+                      color: kLightGrey.withOpacity(0.25),
                       thickness: 25,
                       cornerStyle: CornerStyle.bothCurve,
                     ),
@@ -140,7 +140,7 @@ class _SpeedTestState extends State<SpeedTest> {
                                   borderRadius: BorderRadius.circular(200),
                                   gradient: RadialGradient(
                                       radius: 0.15,
-                                      colors: [kPersonalBlue.withOpacity(0.15),kPersonalDarkGrey.withOpacity(0.1)]
+                                      colors: [kBlue.withOpacity(0.15),kDarkGrey.withOpacity(0.1)]
                                   )
                               ),
                               height: MediaQuery.of(context).size.height*0.4,
@@ -153,19 +153,19 @@ class _SpeedTestState extends State<SpeedTest> {
                       NeedlePointer(
                         value: displayRate,
                         enableAnimation: true,
-                        needleColor: kPersonalBlue,
+                        needleColor: kBlue,
                         needleStartWidth: 1.2,
                         needleEndWidth: 4.7,
                         needleLength: 0.65,
                         knobStyle: KnobStyle(
-                          color: kPersonalBlue,
+                          color: kBlue,
                         ),
                       ),
                       RangePointer(
                           value: displayRate,
                           width: 25,
                           enableAnimation: true,
-                          color: kPersonalBlue,
+                          color: kBlue,
                           cornerStyle: CornerStyle.bothCurve)
                     ]),
               ]
@@ -175,7 +175,7 @@ class _SpeedTestState extends State<SpeedTest> {
                 Text(
                     '${displayRate.round()}',
                     style: TextStyle(
-                        color: kPersonalWhite,
+                        color: kWhite,
                         fontSize: 32,
                         fontFamily:'OpenSans-Regular',
                         fontWeight: FontWeight.w600
@@ -184,7 +184,7 @@ class _SpeedTestState extends State<SpeedTest> {
                 Text(
                     'Mbps',
                     style: TextStyle(
-                        color: kPersonalBlue,
+                        color: kBlue,
                         fontSize: 18,
                         fontFamily: 'OpenSans-Regular'
                     )
@@ -204,7 +204,7 @@ class _SpeedTestState extends State<SpeedTest> {
                         Text(
                           'download:'.toUpperCase(),
                           style: TextStyle(
-                              color: kPersonalWhite,
+                              color: kWhite,
                               fontSize: 18,
                               fontFamily:'OpenSans-SemiBold',
                               fontWeight: FontWeight.w600
@@ -218,7 +218,7 @@ class _SpeedTestState extends State<SpeedTest> {
                               Text(
                                   downloadRate == 0 ?'-':'${downloadRate.round()} ',
                                   style: TextStyle(
-                                      color: kPersonalWhite,
+                                      color: kWhite,
                                       fontSize: 36,
                                       fontFamily: 'OpenSans-Bold',
                                       fontWeight: FontWeight.bold
@@ -229,7 +229,7 @@ class _SpeedTestState extends State<SpeedTest> {
                                 child: Text(
                                     'Mbps',
                                     style: TextStyle(
-                                      color: kPersonalBlue,
+                                      color: kBlue,
                                       fontSize: 16,
                                       fontFamily: 'OpenSans-Regular',
                                     )
@@ -249,7 +249,7 @@ class _SpeedTestState extends State<SpeedTest> {
                         Text(
                           'upload:'.toUpperCase(),
                           style: TextStyle(
-                              color: kPersonalWhite,
+                              color: kWhite,
                               fontSize: 18,
                               fontFamily: 'OpenSans-SemiBold',
                               fontWeight: FontWeight.w600
@@ -263,7 +263,7 @@ class _SpeedTestState extends State<SpeedTest> {
                               Text(
                                   uploadRate == 0 ?'-':'${uploadRate.round()} ',
                                   style: TextStyle(
-                                      color: kPersonalWhite,
+                                      color: kWhite,
                                       fontSize: 36,
                                       fontWeight: FontWeight.bold
                                   )
@@ -273,7 +273,7 @@ class _SpeedTestState extends State<SpeedTest> {
                                 child: Text(
                                     'Mbps',
                                     style: TextStyle(
-                                        color: kPersonalBlue,
+                                        color: kBlue,
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal
                                     )

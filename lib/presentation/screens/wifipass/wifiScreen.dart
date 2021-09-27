@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wifi_speed_test/presentation/components/wifiPass/resultCard.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 
 class WifiScreen extends StatefulWidget{
@@ -10,20 +11,20 @@ class WifiScreen extends StatefulWidget{
   }
 }
 
-class _WifiScreen extends State<WifiScreen> {
+class _WifiScreen extends State<WifiScreen>{
   bool visible=false;
-  bool enabled=true;
+  bool enabled=false;
   int passwordPosition=0;
+  var textFieldController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery
         .of(context)
         .size
         .height;
-    var textFieldController = TextEditingController();
     String pass = '';
     return Scaffold(
-        backgroundColor: kPersonalDarkGrey,
+        backgroundColor: kDarkGrey,
         body: Column(
           children: [
             Padding(
@@ -35,7 +36,7 @@ class _WifiScreen extends State<WifiScreen> {
                   Text(
                     'Wi-Fi Pass',
                     style: TextStyle(
-                        color: kPersonalWhite,
+                        color: kWhite,
                         fontSize: 32,
                         fontFamily: 'OpenSans-SemiBold',
                         fontWeight: FontWeight.w600
@@ -45,9 +46,9 @@ class _WifiScreen extends State<WifiScreen> {
               ),
             ),
             Visibility(
-              visible: visible,
-              child: ResultCard(isUnique:visible,passwordPosition: passwordPosition),
-            ),
+                visible: visible,
+                child: ResultCard(isUnique:visible,passwordPosition: passwordPosition),
+              ),
             Container(
               child: Padding(
                 padding: EdgeInsets.only(left: 20, right: 20),
@@ -55,13 +56,13 @@ class _WifiScreen extends State<WifiScreen> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Visibility(
-                      visible: passwordPosition==0,
+                      visible: !visible,
                       child: Row(
                         children: [
                           Text(
                             ' Find how often your Wi-Fi password is used',
                             style: TextStyle(
-                                color: kPersonalLightGrey,
+                                color: kWhite,
                                 fontFamily: 'OpenSans-Regular',
                                 fontSize: 14
                             ),
@@ -73,7 +74,7 @@ class _WifiScreen extends State<WifiScreen> {
                     Container(
                       height: 56,
                       decoration: BoxDecoration(
-                          color: kPersonalLightGrey.withOpacity(0.1),
+                          color: kLightGrey.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(10)
                       ),
                       child: Padding(
@@ -81,7 +82,7 @@ class _WifiScreen extends State<WifiScreen> {
                         child: TextField(
                           controller: textFieldController,
                           style: TextStyle(
-                              color: kPersonalWhite,
+                              color: kWhite,
                               fontSize: 16.0,
                               fontFamily: 'OpenSans-Regular'
                           ),
@@ -89,7 +90,7 @@ class _WifiScreen extends State<WifiScreen> {
                             border: InputBorder.none,
 
                           ),
-                          cursorColor: kPersonalBlue,
+                          cursorColor: kBlue,
                           autocorrect: false,
                           onChanged: (str) {
                               pass = str;
@@ -106,11 +107,11 @@ class _WifiScreen extends State<WifiScreen> {
         ),
         bottomSheet: Container(
           decoration: BoxDecoration(
-              color: kPersonalDarkGrey,
-              border: Border(top: BorderSide(color: kPersonalDarkGrey,width: 3))
+              color: kDarkGrey,
+              border: Border(top: BorderSide(color: kDarkGrey,width: 3))
           ),
           child: Padding(
-            padding: EdgeInsets.only(left: 15, right: 15,bottom: height*0.03),
+            padding: EdgeInsets.only(left: 15, right: 15),
             child: Stack(
               children: [
                 Container(
@@ -118,25 +119,25 @@ class _WifiScreen extends State<WifiScreen> {
                     height: 56,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color:kPersonalBlue
+                        color:enabled ? kBlue : kLightGrey.withOpacity(0.15)
                     ),
                     child: TextButton(
                         onPressed: () async {
                           String fileText = await rootBundle.loadString(
                               'assets/passwords/passes.txt');
-                          enabled&&pass.isNotEmpty?  setState((){
-                        passwordPosition=0;
-                        visible=false;
-                        passwordPosition = compare(fileText, pass,passwordPosition);
-                        textFieldController.clear();
-                        visible=checkPosition(passwordPosition);
-                      })
-                      : enabled=false;
-                    },
+                          enabled&&pass.isNotEmpty ?  setState((){
+                            passwordPosition=0;
+                            visible=false;
+                            passwordPosition = compare(fileText, pass,passwordPosition);
+                            textFieldController.clear();
+                            visible=checkPosition(passwordPosition);
+                          })
+                              : enabled=false;
+                        },
                         child: Text(
                           'Find out'.toUpperCase(),
                           style: TextStyle(
-                              color: kPersonalWhite,
+                              color: kWhite,
                               fontSize: 18.0,
                               fontFamily: 'OpenSans-Regular',
                               fontWeight: FontWeight.bold
@@ -144,7 +145,7 @@ class _WifiScreen extends State<WifiScreen> {
                         )
                     )
                 ),
-                SizedBox(height: height * 0.03)
+                SizedBox(height: height * 0.1)
               ],
             ),
           ),
@@ -179,45 +180,5 @@ class _WifiScreen extends State<WifiScreen> {
     pos>0 ? flag=true : flag=false;
     if(pos== -1)flag=true;
     return flag;
-  }
-}
-
-class ResultCard extends StatelessWidget {
-  final isUnique;
-  final passwordPosition;
-  ResultCard({required this.isUnique, this.passwordPosition});
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      child: Padding(
-        padding: EdgeInsets.only(bottom: 10),
-        child: Container(
-          width: double.infinity,
-          height: 57,
-          decoration: BoxDecoration(
-              color: isUnique&&passwordPosition!=-1
-                  ? Color(0xFFFF453A)
-                  : Color(0xFF32D74B),
-              borderRadius: BorderRadius.circular(10)
-          ),
-          child: Center(
-            child: Text(
-              isUnique && passwordPosition!=-1
-                  ? 'Your password is the $passwordPosition-th by the \nnumber of uses'
-                  :'Your password is unique!',
-              overflow: TextOverflow.fade,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: 'OpenSans-Regualar',
-                  fontWeight: FontWeight.w600,
-                  color: kPersonalWhite
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }

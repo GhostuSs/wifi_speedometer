@@ -24,18 +24,18 @@ class _OnBoardingScreen extends State<OnBoardingScreen> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPersonalDarkGrey,
+      backgroundColor: kDarkGrey,
       appBar: AppBar(
-        backgroundColor: kPersonalDarkGrey,
+        backgroundColor: kDarkGrey,
         elevation: 0.0,
         leading: Padding(
           padding: EdgeInsets.all(20.0),
           child: currentIndex != slides.length - 1 && currentIndex != slides.length ? Text('') : IconButton(
             onPressed: () {Navigator.pushNamed(context, '/');},
             icon: Icon(CupertinoIcons.clear),
-            splashColor: kPersonalDarkGrey,
-            hoverColor: kPersonalDarkGrey,
-            color: kPersonalWhite,
+            splashColor: kDarkGrey,
+            hoverColor: kDarkGrey,
+            color: kWhite,
             iconSize: 24.0,
           ),
         ),
@@ -73,8 +73,8 @@ Widget btmSheet(bool isLast,String text,onPressed){
             ? EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.05)
             : EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.08),
         decoration: BoxDecoration(
-          border: Border(top: BorderSide(color: kPersonalDarkGrey,width: 3.0)),
-          color: kPersonalDarkGrey,
+          border: Border(top: BorderSide(color: kDarkGrey,width: 3.0)),
+          color: kDarkGrey,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -91,14 +91,14 @@ Widget btmSheet(bool isLast,String text,onPressed){
                 width: double.infinity,
                 height: 56,
                 decoration: BoxDecoration(
-                    color: kPersonalBlue,
+                    color: kBlue,
                     borderRadius: BorderRadius.circular(8.0)
                 ),
                 child: TextButton(
                   child: Text(
                     '$text',
                     style: TextStyle(
-                      color: kPersonalWhite,
+                      color: kWhite,
                       fontSize: 18.0,
                       fontFamily: 'OpenSans-Bold',
                       fontWeight: FontWeight.bold,
@@ -152,7 +152,7 @@ Widget btmSheet(bool isLast,String text,onPressed){
                     child: Text(
                       'Restore purchases',
                       style: TextStyle(
-                          color: kPersonalWhite,
+                          color: kWhite,
                           fontFamily: 'OpenSans-Regular',
                           fontSize: 16.0
                       ),
@@ -174,7 +174,7 @@ Widget pageIndexIndicator(bool isCurrentPage) {
         height: 8.0,
         width: 8.0,
         decoration: BoxDecoration(
-            color: isCurrentPage ? kPersonalBlue : kPersonalLightGrey,
+            color: isCurrentPage ? kBlue : kLightGrey,
             borderRadius: BorderRadius.circular(15.0)
         ),
       ),

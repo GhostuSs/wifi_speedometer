@@ -11,7 +11,7 @@ void main() => runApp(
         Provider<Data>(create: (_) => Data()),
       ],
       child: MaterialApp(
-        color: kPersonalDarkGrey,
+        color: kDarkGrey,
           debugShowCheckedModeBanner: false,
           initialRoute: "/onboarding",
           routes: routes
