@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 enum Keys{
@@ -13,16 +14,14 @@ class ResultsRateCard extends StatelessWidget{
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5.0,vertical: 5.0),
+      padding: EdgeInsets.only(left: keyVal == Keys.download ? 10 : 0, right:keyVal == Keys.upload ? 10 : 0,bottom:5,top:5),
       child: Container(
-        width: MediaQuery.of(context).size.width*0.45,
-        height: MediaQuery.of(context).size.height*0.125,
+        width: width*0.45,
           decoration: BoxDecoration(
             color:kLightGrey.withOpacity(0.15),
             borderRadius: BorderRadius.circular(10.0),
           ),
-          child: Padding(
-            padding: EdgeInsets.only(left: width*0.03,right: width*0.025,bottom: height*0.02),
+          child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -44,46 +43,44 @@ class ResultsRateCard extends StatelessWidget{
                       ),
                       Icon(
                         keyVal==Keys.download
-                            ? Icons.keyboard_arrow_down_rounded
-                            : Icons.keyboard_arrow_up_rounded,
-                        size: 38.0,
+                            ? CupertinoIcons.chevron_down
+                            : CupertinoIcons.chevron_up,
+                        size: 24.0,
                         color: kLightGrey,
                       )
                     ],
                   ),//Download/upload title
                 )),
-                Center(child:Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    FittedBox(
-                      fit:BoxFit.scaleDown,
-                      child: Text(
-                        '$value',
-                        style: TextStyle(
-                            color: kWhite,
-                            fontFamily: 'OpenSans-SemiBold',
-                            fontWeight: FontWeight.w600,
-                            fontSize: 36.0
-                        ),
-                      ),
-                    ),
-                    Padding(
-                        padding: EdgeInsets.only(left:5,bottom: 7),
-                        child: FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Text(
-                            'Mpbs',
-                            style: TextStyle(
-                                color: kBlue,
-                                fontFamily: 'OpenSans-Regular',
-                                fontSize: 18.0
-                            ),
+                SizedBox(height: height*0.01),
+                Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          '$value',
+                          style: TextStyle(
+                              color: kWhite,
+                              fontFamily: 'OpenSans-SemiBold',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24.0
                           ),
-                        )
-                    ),
-                  ],
-                ))
+                        ),
+                        Padding(
+                            padding: EdgeInsets.only(left:5,bottom: 2),
+                            child: Text(
+                              'Mpbs',
+                              style: TextStyle(
+                                  color: kBlue,
+                                  fontFamily: 'OpenSans-Regular',
+                                  fontSize: 14.0
+                              ),
+                            )
+                        ),
+                      ],
+                    )
+                ),
+                SizedBox(height: height*0.0225)
               ],
             ),
           )
@@ -94,7 +91,8 @@ TextStyle _textStyle(){
     return TextStyle(
         color: kLightGrey,
         fontFamily: 'OpenSans-Regular',
-        fontSize: 20.0
+        fontSize: 16.0,
+        fontWeight: FontWeight.w300
     );
 }
 }

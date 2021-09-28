@@ -18,11 +18,11 @@ class DescriptionBody extends StatelessWidget{
               children: [
                 ResultsRateCard(
                     Keys.download,
-                    context.read<Data>().downloadRate
+                    context.read<Data>().downloadRate ?? 0
                 ),
                 ResultsRateCard(
                     Keys.upload,
-                    context.read<Data>().uploadRate
+                    context.read<Data>().uploadRate ?? 0
                 ),
               ],
             ),

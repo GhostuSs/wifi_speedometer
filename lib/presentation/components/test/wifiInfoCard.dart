@@ -10,7 +10,7 @@ class WifiInfoCard extends StatelessWidget{
     final suffix=context.read<Data>();
     var height = MediaQuery.of(context).size.height;
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: height*0.01),
+        padding: EdgeInsets.symmetric(horizontal: height*0.02),
         child: Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -35,55 +35,51 @@ class WifiInfoCard extends StatelessWidget{
     );
   }
 Widget fields(IconData icon,String nameOfField,value,last){
-    double fontSize=24;
-    double iconSize=28;
+    double fontSize=18;
+    double iconSize=24;
     return Padding(
       padding: EdgeInsets.only(top: 15),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-              padding: EdgeInsets.only(bottom: 5),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Padding(
-                      padding: EdgeInsets.only(bottom: 1),
-                      child: Icon(
-                        icon,
-                        color: kLightGrey,
-                        size: iconSize,
-                      )
-                  ),//Icon
-                  Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: Text(
-                        '$nameOfField',
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: kLightGrey,
-                          fontSize: fontSize,
-                          fontFamily: 'OpenSans-Regular',
-                          fontWeight: FontWeight.normal,
-                        ),
-                      )
-                  ),
-                  Spacer(),
-                  FittedBox(
-                    fit: BoxFit.scaleDown,
+            padding: EdgeInsets.only(bottom: 3),
+            child: Row(
+              children: [
+                Padding(
+                    padding: EdgeInsets.only(top: 0),
+                    child: Icon(
+                      icon,
+                      color: kLightGrey,
+                      size: iconSize,
+                    )
+                ),//Icon
+                Padding(
+                    padding: EdgeInsets.only(left: 10),
                     child: Text(
-                      '$value',
+                      '$nameOfField',
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                          color: kWhite,
-                          fontWeight: FontWeight.normal,
-                          fontFamily: 'OpenSans-Regular',
-                          fontSize: fontSize
+                        color: kLightGrey,
+                        fontSize: fontSize,
+                        fontFamily: 'OpenSans-Regular',
+                        fontWeight: FontWeight.w400,
                       ),
-                    ),
+                    )
+                ),
+                Spacer(),
+                Text(
+                  value=='null' ? 'Unknown' : '$value',
+                  style: TextStyle(
+                      color: kWhite,
+                      fontWeight: FontWeight.w300,
+                      fontFamily: 'OpenSans-Regular',
+                      fontSize: fontSize
                   ),
-                ],
+                )
+              ],
 
-              )
+            ),
           ),
           last
               ? Text('')

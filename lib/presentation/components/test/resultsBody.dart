@@ -27,17 +27,17 @@ class ResultBody extends StatelessWidget{
               ]
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal:height*0.01,vertical: height*0.05),
+            padding: EdgeInsets.symmetric(horizontal:height*0.01,vertical: height*0.05 ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ResultsRateCard(
                     Keys.download,
-                    context.read<Data>().downloadRate
+                    context.read<Data>().downloadRate ?? 0
                 ),
                 ResultsRateCard(
                     Keys.upload,
-                    context.read<Data>().uploadRate
+                    context.read<Data>().uploadRate ?? 0
                 ),
               ],
             ),

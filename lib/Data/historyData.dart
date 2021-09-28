@@ -1,33 +1,29 @@
+import 'dart:convert';
 
-class Result{
-  Result({required this.isp});
-  int id=0;
-  int downloadRate=0;
-  int uploadRate=0;
-  String isp='';
-  String wifi='Unknown';
-  String ip='';
-  String device='';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wifi_speed_test/Data/resultData.dart';
 
-  Result.fromMap(Map map) :
-        this.id = map['title'],
-        this.downloadRate = map['completed'],
-        this.uploadRate = map['uploadRate'],
-        this.isp = map['isp'],
-        this.wifi = map['wifi'],
-        this.ip = map['ip'],
-        this.device = map['device'];
-
-  Map toMap(){
-    return {
-      'id': this.id,
-      'downloadRate': this.downloadRate,
-      'uploadRate' : this.uploadRate,
-      'isp' : this.isp,
-      'wifi' : this.wifi,
-      'ip' : this.ip,
-      'device' : this.device
-    };
+loadData() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? json = prefs.getString('testData_key') ?? null;
+  if(json==null){
+    print('no data');
+  }else{
+    print('loaded: $json');
+    Map<String,dynamic> map = jsonDecode(json);
+    print(map);
+    final data = Data.fromJson(map);
+    print('${data.dateTime},${data.downloadRate},${data.uploadRate},${data.isp},${data.ip},${data.wifi},${data.device}');
   }
-
+}
+saveData(Data data) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String json = jsonEncode(data);
+  print('gen json:$json');
+  prefs.setString('testData_key', json);
+}
+clearData() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.clear();
+  print('Data cleared');
 }

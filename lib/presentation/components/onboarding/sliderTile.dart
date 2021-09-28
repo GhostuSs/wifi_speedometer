@@ -21,7 +21,7 @@ class SliderTile extends StatelessWidget{
           children: [
             Image.asset(
               imageAssetPath,
-              filterQuality: FilterQuality.high
+              filterQuality: FilterQuality.none
             ),
             Text(
               title,
