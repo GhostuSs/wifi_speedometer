@@ -28,8 +28,10 @@ class Data{
       'device':device
   };
   }
-
-  Data.fromJson(Map<String,dynamic> json){
+  hasData(){
+    dateTime!.isNotEmpty&&isp!.isNotEmpty&&ip!.isNotEmpty&&device!.isNotEmpty ? true : false;
+  }
+  fromJson(Map<String,dynamic> json){
     dateTime=json['dateTime'];
     downloadRate=json['downloadRate'];
     uploadRate=json['uploadRate'];

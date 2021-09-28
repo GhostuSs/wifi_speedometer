@@ -5,8 +5,6 @@ import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 import 'package:wifi_speed_test/presentation/screens/history/description.dart';
 class HistoryCard extends StatefulWidget{
-  final index;
-  HistoryCard({required int this.index});
   @override
   State<StatefulWidget> createState() {
     return _HistoryCard();
@@ -41,7 +39,7 @@ class _HistoryCard extends State<HistoryCard>{
                       '${context.read<Data>().dateTime}',
                       style: TextStyle(
                           color: kWhite,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w400,
                           fontFamily: 'OpenSans-SemiBold',
                           fontSize: 18
                       ),
@@ -59,7 +57,8 @@ class _HistoryCard extends State<HistoryCard>{
                       style: TextStyle(
                           color: kWhite,
                           fontFamily: 'OpenSans-Regular',
-                          fontSize: 14
+                          fontSize: 14,
+                        fontWeight:FontWeight.w300
                       ),
                     ),
                     Text(
@@ -95,7 +94,7 @@ class _HistoryCard extends State<HistoryCard>{
                               color: kWhite,
                               fontFamily: 'OpenSans-SemiBold',
                               fontSize: 24,
-                              fontWeight: FontWeight.w600
+                              fontWeight: FontWeight.w500
                           ),
                         ),
                       ),
@@ -107,7 +106,7 @@ class _HistoryCard extends State<HistoryCard>{
                         style: TextStyle(
                             color: kWhite,
                             fontFamily: 'OpenSans-SemiBold',
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                             fontSize: 24
                         ),
                       )
@@ -117,11 +116,11 @@ class _HistoryCard extends State<HistoryCard>{
                       child: Padding(
                         padding: EdgeInsets.only(right: 10),
                         child: Text(
-                          '${context.read<Data>().wifi}',
+                            context.read<Data>().wifi==null ? 'Unknown' : '${context.read<Data>().wifi}',
                           style: TextStyle(
                               color: kWhite,
                               fontFamily: 'OpenSans-SemiBold',
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w500,
                               fontSize: 14
                           ),
                         ),
@@ -139,11 +138,12 @@ class _HistoryCard extends State<HistoryCard>{
                       child: Padding(
                         padding: EdgeInsets.only(left: 25),
                         child: Text(
-                          'Mbps',
+                          'Mpbs',
                           style: TextStyle(
                             color: kWhite,
                             fontFamily: 'OpenSans-Regular',
                             fontSize: 14,
+                            fontWeight: FontWeight.w300
                           ),
                         ),
                       ),
@@ -151,11 +151,12 @@ class _HistoryCard extends State<HistoryCard>{
                     Align(
                         alignment: Alignment.center,
                         child: Text(
-                          'Mbps',
+                          'Mpbs',
                           style: TextStyle(
                             color: kWhite,
                             fontFamily: 'OpenSans-Regular',
                             fontSize: 14,
+                              fontWeight: FontWeight.w300
                           ),
                         )
                     )

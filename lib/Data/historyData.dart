@@ -1,19 +1,18 @@
 import 'dart:convert';
-
+import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
 
-loadData() async {
+loadData(BuildContext context) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? json = prefs.getString('testData_key') ?? null;
   if(json==null){
     print('no data');
   }else{
-    print('loaded: $json');
     Map<String,dynamic> map = jsonDecode(json);
     print(map);
-    final data = Data.fromJson(map);
-    print('${data.dateTime},${data.downloadRate},${data.uploadRate},${data.isp},${data.ip},${data.wifi},${data.device}');
+    context.read<Data>().fromJson(map);
   }
 }
 saveData(Data data) async {
