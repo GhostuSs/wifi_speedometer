@@ -26,7 +26,7 @@ class Data{
       'wifi':wifi,
       'ip':ip,
       'device':device
-  };
+    };
   }
   hasData(){
     dateTime!.isNotEmpty&&isp!.isNotEmpty&&ip!.isNotEmpty&&device!.isNotEmpty ? true : false;
