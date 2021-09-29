@@ -40,7 +40,7 @@ saveList(List<Data> gotList) async {
   prefs.setStringList('history_key', list as List<String>);
 }
 
-  getList(List<Data> list) async{
+  Future<List<Data>> getList() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var gotList = prefs.getStringList('history_key');
     if(gotList!=null){
@@ -51,7 +51,9 @@ saveList(List<Data> gotList) async {
         dataSet.add(item);
         print(dataSet[i].dateTime);
       }
-      list=dataSet;
+      return dataSet;
+    }else{
+      return [Data(dateTime: '',device: '',downloadRate: 0,uploadRate: 0,ip: '',isp: '',wifi: '')];
     }
   }
   addList(Data data)async{

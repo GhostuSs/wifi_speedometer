@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wifi_speed_test/Data/historyData.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
+import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 import 'historyCard.dart';
 
 class HistoryBody extends StatefulWidget{
@@ -14,25 +15,40 @@ class HistoryBody extends StatefulWidget{
 
 }
 class _HistoryBody extends State<HistoryBody>{
-  List<Data> dataList =List.empty(growable: true);
+  late List<Data> dataList;
+  late List<Widget> historyList;
   late SharedPreferences sharedPreferences;
 
   @override
   void initState(){
-    initSharedPreferences();
     super.initState();
   }
-  initSharedPreferences()async{
+  Future<bool> initSharedPreferences()async{
     sharedPreferences = await SharedPreferences.getInstance();
-    await getList(dataList);
+    dataList=await getList();
+    historyList = List.generate(dataList.length, (index) => HistoryCard(dataList[index]));
+    return true;
   }
+
   @override
   Widget build(BuildContext context) {
-
-    final List<Widget> historyList = List.generate(dataList.length, (index) => HistoryCard(dataList[index]));
-    return ListView.builder(
-        itemCount: historyList.length,
-        itemBuilder: (context, index)=>HistoryCard(dataList[index]));
+    return Container(
+      child: FutureBuilder(
+        future: initSharedPreferences(), builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.data == null) {
+          return Center(
+            child: CircularProgressIndicator(
+              color: kBlue,
+            ),
+          );
+        } else {
+          return ListView.builder(
+              itemCount: historyList.length,
+              itemBuilder: (context, index) => HistoryCard(dataList[index]));
+        }
+      }
+      )
+    );
   }
   saveData(){
     List<dynamic> list =List.empty(growable: true);
