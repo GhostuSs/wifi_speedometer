@@ -41,7 +41,7 @@ class _HistoryBody extends State<HistoryBody>{
               color: kBlue,
             ),
           );
-        } else {
+        }else{
           return ListView.builder(
               itemCount: historyList.length,
               itemBuilder: (context, index) => HistoryCard(dataList[index]));
@@ -59,7 +59,6 @@ class _HistoryBody extends State<HistoryBody>{
   loadData(){
     List<String>? list = sharedPreferences.getStringList('history_key');
     if(list != null){
-      var listData = list.map((item) => Data.fromJson(json.decode(item))).toList();
     }else{
       print('no data');
     }

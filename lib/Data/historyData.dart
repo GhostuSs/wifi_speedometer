@@ -16,18 +16,18 @@ loadData(BuildContext context) async {
   }
 }
 
-saveData(Data data) async {
+/*saveData(Data data) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String json = jsonEncode(data);
   print('gen json:$json');
   prefs.setString('testData_key', json);
-}
-clearData() async {
+}*/
+/*clearData() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.clear();
   print('Data cleared');
 }
-
+*/
 
 clearList()async{
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -49,18 +49,14 @@ saveList(List<Data> gotList) async {
         Data item = Data(dateTime: '',device: '',downloadRate: 0,uploadRate: 0,ip: '',isp: '',wifi: '');
         item = Data.fromJson(json.decode(gotList[i]));
         dataSet.add(item);
-        print(dataSet[i].dateTime);
       }
       return dataSet;
     }else{
-      return [Data(dateTime: '',device: '',downloadRate: 0,uploadRate: 0,ip: '',isp: '',wifi: '')];
+      return [];
     }
   }
   addList(Data data)async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var gotList = prefs.getStringList('history_key');
-    if(gotList != null){
-      gotList.add(data.toJson().toString());
-     //saveList(gotList);
-    }
+      List<Data> list = await getList();
+      list.add(data);
+      await saveList(list);
 }

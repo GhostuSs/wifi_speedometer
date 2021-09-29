@@ -16,6 +16,7 @@ PreferredSizeWidget appBarResults(BuildContext context) {
         highlightColor: kDarkGrey,
         splashColor: kDarkGrey,
         onPressed: () async {
+          await addList(context.read<Data>());
           Navigator.pushNamed(context, '/');
         },
         icon: Icon(Icons.arrow_back_ios),

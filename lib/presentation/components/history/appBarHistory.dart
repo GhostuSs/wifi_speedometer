@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/src/provider.dart';
-import 'package:wifi_speed_test/Data/resultData.dart';
+import 'package:wifi_speed_test/Data/historyData.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 
 PreferredSizeWidget appBarHistory(BuildContext context) {
@@ -60,8 +59,8 @@ PreferredSizeWidget appBarHistory(BuildContext context) {
                               fontFamily: 'OpenSans-SemiBold',
                               color: kBlue),
                         ),
-                        onPressed: (){
-                          context.read<Data>().removeData();
+                        onPressed: () async {
+                          await clearList();
                           Navigator.pushNamed(context, '/');
                         },
                       )
