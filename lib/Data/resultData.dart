@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:shared_preferences/shared_preferences.dart';
+
 class Data{
   String? dateTime='';
   int? downloadRate=0;
@@ -6,7 +10,6 @@ class Data{
   String? wifi='Unknown';
   String? ip='';
   String? device='';
-
   Data({this.dateTime,this.downloadRate,this.uploadRate,this.wifi,this.ip,this.device,this.isp});
   removeData(){
     dateTime='';
@@ -28,8 +31,14 @@ class Data{
       'device':device
     };
   }
-  hasData(){
-    dateTime!.isNotEmpty&&isp!.isNotEmpty&&ip!.isNotEmpty&&device!.isNotEmpty ? true : false;
+  Data.fromJson(Map<String,dynamic> json){
+    dateTime=json['dateTime'];
+    downloadRate=json['downloadRate'];
+    uploadRate=json['uploadRate'];
+    isp=json['isp'];
+    wifi=json['wifi'];
+    ip=json['ip'];
+    device=json['device'];
   }
   fromJson(Map<String,dynamic> json){
     dateTime=json['dateTime'];

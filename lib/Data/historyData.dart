@@ -15,6 +15,7 @@ loadData(BuildContext context) async {
     context.read<Data>().fromJson(map);
   }
 }
+
 saveData(Data data) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String json = jsonEncode(data);
@@ -25,4 +26,39 @@ clearData() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.clear();
   print('Data cleared');
+}
+
+
+clearList()async{
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.clear();
+}
+saveList(List<Data> gotList) async {
+  List list = gotList;
+  list = list.map((item) => json.encode(item)).toList();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setStringList('history_key', list as List<String>);
+}
+
+  getList(List<Data> list) async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var gotList = prefs.getStringList('history_key');
+    if(gotList!=null){
+      List<Data> dataSet=List.empty(growable: true);
+      for(int i=0;i<gotList.length;i++){
+        Data item = Data(dateTime: '',device: '',downloadRate: 0,uploadRate: 0,ip: '',isp: '',wifi: '');
+        item = Data.fromJson(json.decode(gotList[i]));
+        dataSet.add(item);
+        print(dataSet[i].dateTime);
+      }
+      list=dataSet;
+    }
+  }
+  addList(Data data)async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var gotList = prefs.getStringList('history_key');
+    if(gotList != null){
+      gotList.add(data.toJson().toString());
+     //saveList(gotList);
+    }
 }

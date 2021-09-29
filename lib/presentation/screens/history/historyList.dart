@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:provider/src/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wifi_speed_test/Data/historyData.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/components/history/appBarHistory.dart';
 import 'package:wifi_speed_test/presentation/components/history/historyBody.dart';
