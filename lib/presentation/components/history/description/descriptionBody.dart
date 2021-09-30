@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
-import 'package:wifi_speed_test/Data/resultData.dart';
+import 'package:wifi_speed_test/Data/historyData.dart';
+import 'package:wifi_speed_test/presentation/components/history/description/wifiInfoHistory.dart';
 import 'package:wifi_speed_test/presentation/components/test/resultRateCard.dart';
-import 'package:wifi_speed_test/presentation/components/test/wifiInfoCard.dart';
 
 class DescriptionBody extends StatelessWidget{
+  final int index;
+  DescriptionBody(int this.index);
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -18,16 +20,16 @@ class DescriptionBody extends StatelessWidget{
               children: [
                 ResultsRateCard(
                     Keys.download,
-                    context.read<Data>().downloadRate ?? 0
+                    context.read<HistoryList>().dataList[index].downloadRate ?? 0
                 ),
                 ResultsRateCard(
                     Keys.upload,
-                    context.read<Data>().uploadRate ?? 0
+                    context.read<HistoryList>().dataList[index].uploadRate ?? 0
                 ),
               ],
             ),
           ),
-          WifiInfoCard(),
+          WifiInfoHistoryCard(index),
         ]
     );
   }

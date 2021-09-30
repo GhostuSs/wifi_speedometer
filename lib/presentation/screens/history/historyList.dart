@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wifi_speed_test/presentation/components/history/appBarHistory.dart';
-import 'package:wifi_speed_test/presentation/components/history/historyBody.dart';
+import 'package:wifi_speed_test/presentation/components/history/history/appBarHistory.dart';
+import 'package:wifi_speed_test/presentation/components/history/history/historyBody.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 class HistoryScreen extends StatefulWidget{
   @override

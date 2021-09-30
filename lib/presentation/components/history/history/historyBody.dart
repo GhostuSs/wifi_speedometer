@@ -18,7 +18,6 @@ class HistoryBody extends StatefulWidget{
 class _HistoryBody extends State<HistoryBody>{
   late List<Widget> historyList;
   late SharedPreferences sharedPreferences;
-
   @override
   void initState(){
     super.initState();
@@ -26,7 +25,7 @@ class _HistoryBody extends State<HistoryBody>{
   Future<bool> initSharedPreferences(BuildContext context)async{
     sharedPreferences = await SharedPreferences.getInstance();
     context.read<HistoryList>().dataList=await getList();
-    historyList = List.generate(context.read<HistoryList>().dataList.length, (index) => HistoryCard(context.read<HistoryList>().dataList[index]));
+    historyList = List.generate(context.read<HistoryList>().dataList.length, (index) => HistoryCard(index));
     return true;
   }
 
@@ -44,7 +43,7 @@ class _HistoryBody extends State<HistoryBody>{
         }else{
           return ListView.builder(
               itemCount: historyList.length,
-              itemBuilder: (context, index) => HistoryCard(context.read<HistoryList>().dataList[index]));
+              itemBuilder: (context, index) => HistoryCard(index));
         }
       }
       )

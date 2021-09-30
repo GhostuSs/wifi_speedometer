@@ -2,16 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 import 'package:wifi_speed_test/Data/historyData.dart';
-import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 
-PreferredSizeWidget appBarDescription(BuildContext context) {
+PreferredSizeWidget appBarDescription(BuildContext context,int index) {
   return AppBar(
     elevation: 0.0,
     toolbarHeight: 80,
     backgroundColor: kDarkGrey,
     title: Text(
-      '${context.read<Data>().dateTime}',
+      '${context.read<HistoryList>().dataList[index].dateTime}',
       style: TextStyle(
           color: kWhite,
           fontSize: 24.0,
@@ -29,13 +28,13 @@ PreferredSizeWidget appBarDescription(BuildContext context) {
                 builder: (context) => Theme(
                   child: CupertinoAlertDialog(
                     title: Text(
-                      "Clear history?",
+                      "Delete result?",
                       style: TextStyle(
                           fontFamily: 'OpenSans-SemiBold',
                           color: kWhite),
                     ),
                     content: Text(
-                      "Are you sure you want to delete this results?",
+                      "Are you sure you want to delete this result?",
                       style: TextStyle(
                           color: kWhite,
                           fontFamily: 'OpenSans-Regular'),
@@ -60,8 +59,10 @@ PreferredSizeWidget appBarDescription(BuildContext context) {
                               fontFamily: 'OpenSans-SemiBold',
                               color: kBlue),
                         ),
-                        onPressed: (){
-                          clearList();
+                        onPressed: () async {
+                          context.read<HistoryList>().dataList.removeAt(index);
+                          await saveList(context.read<HistoryList>().dataList);
+                          await getList();
                           Navigator.pushNamed(context, '/');
                         },
                       )

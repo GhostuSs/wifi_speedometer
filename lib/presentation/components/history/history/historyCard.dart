@@ -1,20 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wifi_speed_test/Data/resultData.dart';
+import 'package:provider/src/provider.dart';
+import 'package:wifi_speed_test/Data/historyData.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 import 'package:wifi_speed_test/presentation/screens/history/description.dart';
 
 class HistoryCard extends StatefulWidget{
-  final data;
-  HistoryCard(Data this.data);
+  final int index;
+  HistoryCard(int this.index);
   @override
   State<StatefulWidget> createState() {
-    return _HistoryCard(data);
+    return _HistoryCard(index);
   }
 }
 class _HistoryCard extends State<HistoryCard>{
-  Data data = new Data();
-  _HistoryCard(Data this.data);
+  final int index;
+  _HistoryCard(int this.index);
   @override
   Widget build(BuildContext context) {
   return Padding(
@@ -31,7 +32,7 @@ class _HistoryCard extends State<HistoryCard>{
           hoverColor: kBlack,
           highlightColor: kBlack,
           onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>DescriptionScreen()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>DescriptionScreen(index)));
           },
           child: Column(
             children: [
@@ -40,7 +41,7 @@ class _HistoryCard extends State<HistoryCard>{
                 child: Row(
                   children: [
                     Text(
-                      '${data.dateTime}',
+                      '${context.read<HistoryList>().dataList[index].dateTime}',
                       style: TextStyle(
                           color: kWhite,
                           fontWeight: FontWeight.w400,
@@ -93,7 +94,7 @@ class _HistoryCard extends State<HistoryCard>{
                       child: Padding(
                         padding: EdgeInsets.only(left: 25),
                         child: Text(
-                          '${data.downloadRate}'.toUpperCase(),
+                          '${context.read<HistoryList>().dataList[index].downloadRate}'.toUpperCase(),
                           style: TextStyle(
                               color: kWhite,
                               fontFamily: 'OpenSans-SemiBold',
@@ -106,7 +107,7 @@ class _HistoryCard extends State<HistoryCard>{
                     Align(
                       alignment: Alignment.center,
                       child: Text(
-                        '${data.uploadRate}'.toUpperCase(),
+                        '${context.read<HistoryList>().dataList[index].uploadRate}'.toUpperCase(),
                         style: TextStyle(
                             color: kWhite,
                             fontFamily: 'OpenSans-SemiBold',
@@ -120,7 +121,7 @@ class _HistoryCard extends State<HistoryCard>{
                       child: Padding(
                         padding: EdgeInsets.only(right: 10),
                         child: Text(
-                            data.wifi==null ? 'Unknown' : '${data.wifi}',
+                          context.read<HistoryList>().dataList[index].wifi==null ? 'Unknown' : '${context.read<HistoryList>().dataList[index].wifi}',
                           style: TextStyle(
                               color: kWhite,
                               fontFamily: 'OpenSans-SemiBold',
