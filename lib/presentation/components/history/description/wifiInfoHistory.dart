@@ -12,7 +12,7 @@ class WifiInfoHistoryCard extends StatelessWidget{
     var height = MediaQuery.of(context).size.height;
     var suffix=context.read<HistoryList>();
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: height*0.02),
+        padding: EdgeInsets.symmetric(horizontal: height*0.015),
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -36,8 +36,8 @@ class WifiInfoHistoryCard extends StatelessWidget{
     );
   }
   Widget fields(IconData icon,String nameOfField,value,last){
-    double fontSize=18;
-    double iconSize=24;
+    double fontSize=20;
+    double iconSize=26;
     return Padding(
       padding: EdgeInsets.only(top: 15),
       child: Column(

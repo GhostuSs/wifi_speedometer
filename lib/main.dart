@@ -14,7 +14,6 @@ Future<void> main() async {
   seen = prefs.getBool("seen") ?? false;
   print(seen.toString());
   await prefs.setBool("seen", true);
-  seen = false;
   runApp(
     MultiProvider(
       providers: [

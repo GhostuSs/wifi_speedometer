@@ -12,9 +12,8 @@ class DescriptionBody extends StatelessWidget{
     var height = MediaQuery.of(context).size.height;
     return Column(
         children: [
-          SizedBox(height: 15),
           Padding(
-            padding: EdgeInsets.all(height*0.01),
+            padding: EdgeInsets.only(left: 5, right: 5,bottom: height * 0.02),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

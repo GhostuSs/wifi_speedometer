@@ -63,7 +63,7 @@ PreferredSizeWidget appBarDescription(BuildContext context,int index) {
                           context.read<HistoryList>().dataList.removeAt(index);
                           await saveList(context.read<HistoryList>().dataList);
                           await getList();
-                          Navigator.pushNamed(context, '/');
+                          Navigator.pushNamed(context, '/history');
                         },
                       )
                     ],

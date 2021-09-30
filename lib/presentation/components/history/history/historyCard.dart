@@ -44,7 +44,7 @@ class _HistoryCard extends State<HistoryCard>{
                       '${context.read<HistoryList>().dataList[index].dateTime}',
                       style: TextStyle(
                           color: kWhite,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w500,
                           fontFamily: 'OpenSans-SemiBold',
                           fontSize: 18
                       ),
@@ -63,7 +63,7 @@ class _HistoryCard extends State<HistoryCard>{
                           color: kWhite,
                           fontFamily: 'OpenSans-Regular',
                           fontSize: 14,
-                        fontWeight:FontWeight.w300
+                        fontWeight:FontWeight.w400
                       ),
                     ),
                     Text(
@@ -71,7 +71,8 @@ class _HistoryCard extends State<HistoryCard>{
                       style: TextStyle(
                           color: kWhite,
                           fontFamily: 'OpenSans-Regular',
-                          fontSize: 14
+                          fontSize: 14,
+                          fontWeight:FontWeight.w400
                       ),
                     ),
                     Text(
@@ -79,14 +80,15 @@ class _HistoryCard extends State<HistoryCard>{
                       style: TextStyle(
                           color: kWhite,
                           fontFamily: 'OpenSans-Regular',
-                          fontSize: 14
+                          fontSize: 14,
+                          fontWeight:FontWeight.w400
                       ),
                     )
                   ],
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
                 child: Stack(
                   children: [
                     Align(
@@ -99,7 +101,7 @@ class _HistoryCard extends State<HistoryCard>{
                               color: kWhite,
                               fontFamily: 'OpenSans-SemiBold',
                               fontSize: 24,
-                              fontWeight: FontWeight.w500
+                              fontWeight: FontWeight.w600
                           ),
                         ),
                       ),
@@ -111,7 +113,7 @@ class _HistoryCard extends State<HistoryCard>{
                         style: TextStyle(
                             color: kWhite,
                             fontFamily: 'OpenSans-SemiBold',
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w600,
                             fontSize: 24
                         ),
                       )
@@ -125,7 +127,7 @@ class _HistoryCard extends State<HistoryCard>{
                           style: TextStyle(
                               color: kWhite,
                               fontFamily: 'OpenSans-SemiBold',
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                               fontSize: 14
                           ),
                         ),

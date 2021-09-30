@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wifi_speed_test/presentation/components/wifiPass/button.dart';
 import 'package:wifi_speed_test/presentation/components/wifiPass/resultCard.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 
@@ -12,65 +13,30 @@ class WifiScreen extends StatefulWidget{
 }
 
 class _WifiScreen extends State<WifiScreen>{
-  bool visible=false;
-  bool enabled=false;
+  bool uniqueness=false;
   int passwordPosition=0;
   var textFieldController = TextEditingController();
+  String pass = '';
+  BtnState state=BtnState.notReady;
+  CardState cardState = CardState.label;
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery
         .of(context)
         .size
         .height;
-    String pass = '';
     return SafeArea(
       top: false,
       maintainBottomViewPadding: true,
         child: Scaffold(
       backgroundColor: kDarkGrey,
-      floatingActionButton: Container(
-        decoration: BoxDecoration(
-            color: kDarkGrey,
-            border: Border(top: BorderSide(color: kDarkGrey,width: 3))
-        ),
-        child: Padding(
-          padding: EdgeInsets.only(left: 20, right: 20),
-          child: Stack(
-            children: [
-              Container(
-                  width: double.infinity,
-                  height: 56,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color:enabled ? kBlue : kLightGrey.withOpacity(0.15)
-                  ),
-                  child: TextButton(
-                      onPressed: () async {
-                        String fileText = await rootBundle.loadString(
-                            'assets/passwords/passes.txt');
-                        enabled&&pass.isNotEmpty ?  setState((){
-                          passwordPosition=0;
-                          visible=false;
-                          passwordPosition = compare(fileText, pass,passwordPosition);
-                          textFieldController.clear();
-                          visible=checkPosition(passwordPosition);
-                        })
-                            : enabled=false;
-                      },
-                      child: Text(
-                        'Find out'.toUpperCase(),
-                        style: TextStyle(
-                            color: kWhite,
-                            fontSize: 18.0,
-                            fontFamily: 'OpenSans-Regular',
-                            fontWeight: FontWeight.bold
-                        ),
-                      )
-                  )
-              ),
-              SizedBox(height: height * 0.1)
-            ],
-          ),
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(left: 20, right: 20),
+        child: Stack(
+          children: [
+            Button(state, onPressed),
+            SizedBox(height: height * 0.1)
+          ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -94,31 +60,13 @@ class _WifiScreen extends State<WifiScreen>{
               ],
             ),
           ),
-          Visibility(
-            visible: visible,
-            child: ResultCard(isUnique:visible,passwordPosition: passwordPosition),
-          ),
           Container(
             child: Padding(
               padding: EdgeInsets.only(left: 20, right: 20),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Visibility(
-                    visible: !visible,
-                    child: Row(
-                      children: [
-                        Text(
-                          ' Find how often your Wi-Fi password is used',
-                          style: TextStyle(
-                              color: kWhite,
-                              fontFamily: 'OpenSans-Regular',
-                              fontSize: 14
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  ResultCard(state: cardState, isUnique: uniqueness,passwordPosition: passwordPosition),
                   SizedBox(height: height * 0.01),
                   Container(
                     height: 56,
@@ -130,6 +78,7 @@ class _WifiScreen extends State<WifiScreen>{
                       padding: EdgeInsets.only(left: 15),
                       child: TextField(
                         controller: textFieldController,
+                        autofocus: false,
                         style: TextStyle(
                             color: kWhite,
                             fontSize: 16.0,
@@ -143,7 +92,14 @@ class _WifiScreen extends State<WifiScreen>{
                         autocorrect: false,
                         onChanged: (str) {
                           pass = str;
-                          str.isNotEmpty ? enabled=true : enabled=false;
+                          setState(() {
+                            pass.isNotEmpty ? state=BtnState.ready : state=BtnState.notReady;
+                          });
+                          },
+                        onEditingComplete: (){
+                          setState(() {
+                            pass.isNotEmpty ? state=BtnState.ready : state=BtnState.notReady;
+                          });
                         },
                       ),
                     ),
@@ -156,6 +112,25 @@ class _WifiScreen extends State<WifiScreen>{
       ),
     )
     );
+  }
+  onPressed() async {
+    String fileText = await rootBundle.loadString(
+        'assets/passwords/passes.txt');
+    pass.isNotEmpty ?  setState((){
+      passwordPosition=0;
+      uniqueness=false;
+      passwordPosition = compare(fileText, pass,passwordPosition);
+      pass='';
+      textFieldController.clear();
+      uniqueness=checkPosition(passwordPosition);
+      state=BtnState.notReady;
+      cardState=CardState.card;
+
+    })
+    : setState((){
+      state=BtnState.notReady;
+      cardState=CardState.label;
+    });
   }
   int compare(String fileText, String compareString,int counter) {
     String basis = '';
@@ -187,3 +162,5 @@ class _WifiScreen extends State<WifiScreen>{
     return flag;
   }
 }
+
+

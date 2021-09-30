@@ -16,8 +16,7 @@ PreferredSizeWidget appBarResults(BuildContext context) {
         highlightColor: kDarkGrey,
         splashColor: kDarkGrey,
         onPressed: () async {
-          await addList(context.read<Data>());
-          context.read<Data>().removeData();
+          //context.read<Data>().removeData();
           Navigator.pushNamed(context, '/');
         },
         icon: Icon(Icons.arrow_back_ios),
@@ -77,6 +76,7 @@ PreferredSizeWidget appBarResults(BuildContext context) {
                       ),
                       onPressed: (){
                         context.read<Data>().removeData();
+                        removeLast();
                         Navigator.pushNamed(context, '/');
                       },
                     )

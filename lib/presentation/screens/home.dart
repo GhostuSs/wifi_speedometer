@@ -5,7 +5,7 @@ import 'package:wifi_speed_test/presentation/screens/settings/settingsScreen.dar
 import 'package:wifi_speed_test/presentation/screens/test/startScreen.dart';
 import 'package:wifi_speed_test/presentation/screens/wifipass/wifiScreen.dart';
 import 'constants/colorPallette.dart';
-import 'history/historyList.dart';
+import 'history/historyScreen.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,19 +18,19 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
-      backgroundColor: kBlue,
+      backgroundColor: kDarkGrey,
       tabBar: btmNavBar(_selectedIndex),
       tabBuilder: (BuildContext context, _selectedIndex){
         List pages = [
-          StartScreen(),
-          HistoryScreen(),
-          WifiScreen(),
-          SettingsScreen()
+          new StartScreen(),
+          new HistoryScreen(),
+          new WifiScreen(),
+          new SettingsScreen()
         ];
         return CupertinoTabView(
           builder:(context){
             return pages[_selectedIndex];
-          } ,
+          },
         );
       },
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:wifi_speed_test/presentation/screens/history/historyScreen.dart';
 import 'package:wifi_speed_test/presentation/screens/home.dart';
 import 'package:wifi_speed_test/presentation/screens/onboarding/onboardingInternetSpeedTest.dart';
 import 'package:wifi_speed_test/presentation/screens/settings/settingsScreen.dart';
@@ -16,4 +17,5 @@ final Map<String, WidgetBuilder> routes = {
   "/results" : (BuildContext context) => ResultScreen(),
   "/settings" : (BuildContext context) => SettingsScreen(),
   "/wifipass" : (BuildContext context) => WifiScreen(),
+  "/history" : (BuildContext context) => HistoryScreen(),
 };
