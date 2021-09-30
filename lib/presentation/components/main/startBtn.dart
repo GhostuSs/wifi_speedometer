@@ -15,10 +15,10 @@ class StartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200.0,
-      height: 200.0,
+      width: 250.0,
+      height: 250.0,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(100.0)),
+        borderRadius: BorderRadius.all(Radius.circular(125.0)),
           gradient: LinearGradient(
               begin: FractionalOffset.topLeft,
               end: FractionalOffset.bottomRight,
@@ -35,10 +35,10 @@ class StartButton extends StatelessWidget {
           ),
           boxShadow: [
         BoxShadow(
-          color: kBlue.withOpacity(0.4),
+          color: kBlue.withOpacity(0.5),
           offset: Offset(0.0, 0.0),
-          blurRadius: 20.0,
-          spreadRadius: 1.5
+          blurRadius: 30.0,
+          spreadRadius: 0.1
         ),
       ]),
       child: Material(

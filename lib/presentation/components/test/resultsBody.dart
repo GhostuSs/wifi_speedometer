@@ -21,7 +21,7 @@ class ResultBody extends StatelessWidget{
                         color: kWhite,
                         fontSize: 18,
                         fontFamily: 'OpenSans-SemiBold',
-                        fontWeight: FontWeight.w600
+                        fontWeight: FontWeight.w500
                     )
                 )
               ]

@@ -25,5 +25,9 @@ List<SliderModel> getSlides(){
       imagePath: 'assets/onboarding/wifirouter.png',
       title: 'Wi-Fi Uniqueness',
       desc: 'Subscribe to unlock all the features,\njust '+r'$'+'3.99/w '));
+  slides.add(SliderModel(
+      imagePath: 'assets/onboarding/wifirouter.png',
+      title: 'Wi-Fi Uniqueness',
+      desc: 'Subscribe to unlock all the features,\njust '+r'$'+'3.99/w '));
   return slides;
 }

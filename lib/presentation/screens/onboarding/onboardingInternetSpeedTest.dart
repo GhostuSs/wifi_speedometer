@@ -25,36 +25,20 @@ class _OnBoardingScreen extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkGrey,
-      appBar: AppBar(
-        backgroundColor: kDarkGrey,
-        elevation: 0.0,
-        leading: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: currentIndex != slides.length - 1 && currentIndex != slides.length ? Text('') : IconButton(
-            onPressed: () {Navigator.pushNamed(context, '/');},
-            icon: Icon(CupertinoIcons.clear),
-            splashColor: kDarkGrey,
-            hoverColor: kDarkGrey,
-            highlightColor: kDarkGrey,
-            splashRadius: 0.5,
-            color: kWhite,
-            iconSize: 24.0,
-          ),
-        ),
-      ),
       body: PageView.builder(
         controller: pageController,
         itemCount: slides.length,
           onPageChanged: (val)=>setState((){currentIndex=val;}),
           itemBuilder: (context,index){
               return SliderTile(
+                flag: index == slides.length-2 || index ==slides.length-1 ? true : false,
                 imageAssetPath: slides[index].imagePath,
                 title: slides[index].title,
                 desc: slides[index].desc,
               );
           }
       ),
-      floatingActionButton: currentIndex != slides.length ? btmSheet(false,'Next',onNext) : btmSheet(true,'Continue',onContinue),
+      floatingActionButton: currentIndex != slides.length-1 ? btmSheet(false,'Next',onNext) : btmSheet(true,'Continue',onContinue),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
@@ -81,7 +65,7 @@ Widget btmSheet(bool isLast,String text,onPressed){
             isLast ? Text(''):Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for(int i=0;i<slides.length;i++) currentIndex == i ? pageIndexIndicator(true) : pageIndexIndicator(false)
+                for(int i=0;i<slides.length-1;i++) currentIndex == i ? pageIndexIndicator(true) : pageIndexIndicator(false)
               ],
             ),
             Padding(

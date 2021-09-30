@@ -15,7 +15,7 @@ PreferredSizeWidget appBarDescription(BuildContext context,int index) {
           color: kWhite,
           fontSize: 24.0,
           fontFamily: 'OpenSans-SemiBold',
-          fontWeight: FontWeight.w600),
+          fontWeight: FontWeight.w500),
     ),
     actions: [
       IconButton(

@@ -23,7 +23,7 @@ Widget rawCard(String text,onPressed){
                       '$text',
                       style: TextStyle(
                           color: kWhite,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w500,
                           fontSize: 21.0,
                           fontFamily: 'OpenSans-SemiBold'
                       )

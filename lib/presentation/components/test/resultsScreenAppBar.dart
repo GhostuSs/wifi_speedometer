@@ -17,6 +17,7 @@ PreferredSizeWidget appBarResults(BuildContext context) {
         splashColor: kDarkGrey,
         onPressed: () async {
           await addList(context.read<Data>());
+          context.read<Data>().removeData();
           Navigator.pushNamed(context, '/');
         },
         icon: Icon(Icons.arrow_back_ios),
@@ -30,7 +31,7 @@ PreferredSizeWidget appBarResults(BuildContext context) {
           color: kWhite,
           fontSize: 28.0,
           fontFamily: 'OpenSans-SemiBold',
-          fontWeight: FontWeight.w600),
+          fontWeight: FontWeight.w500),
     ),
     actions: [
       IconButton(

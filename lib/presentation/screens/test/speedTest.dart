@@ -25,22 +25,19 @@ class _SpeedTestState extends State<SpeedTest> {
       });
       internetSpeedTest.startDownloadTesting(
         onDone: (double transferRate, SpeedUnit unit) {
-          setState(() {
+          setState((){
             downloadRate = transferRate;
             protectGauge(downloadRate);
-            unitText = unit == SpeedUnit.Kbps ? 'Kb/s' : 'Mb/s';
           });
           internetSpeedTest.startUploadTesting(
             onDone: (double transferRate, SpeedUnit unit) {
               setState(() async {
-                uploadRate = transferRate;
-                uploadRate = uploadRate * 10;
-                protectGauge(uploadRate);
-                unitText =
-                unit == SpeedUnit.Kbps ? 'Kb/s' : 'Mb/s';
-                isTesting = false;
                 context.read<Data>().downloadRate=downloadRate.round();
+                uploadRate = transferRate;
+                protectGauge(uploadRate);
+                isTesting = false;
                 context.read<Data>().uploadRate=uploadRate.round();
+                await Future.delayed(Duration(seconds: 1));
                 Navigator.push(context, PageTransition(child: ResultScreen(), type: PageTransitionType.leftToRight));
               });
             },
@@ -48,7 +45,6 @@ class _SpeedTestState extends State<SpeedTest> {
                 SpeedUnit unit) {
               setState(() {
                 uploadRate = transferRate;
-                uploadRate = uploadRate * 10;
                 protectGauge(uploadRate);
                 unitText =
                 unit == SpeedUnit.Kbps ? 'Kb/s' : 'Mb/s';
@@ -63,7 +59,7 @@ class _SpeedTestState extends State<SpeedTest> {
               });
             },
             testServer: uploadServer,
-            fileSize: 20000000,
+            fileSize: 10000000,
           );
         },
         onProgress: (double percent, double transferRate,
@@ -91,6 +87,7 @@ class _SpeedTestState extends State<SpeedTest> {
   double uploadRate = 0;
   double displayRate = 0;
   String unitText = 'Mb/s';
+  var downloadText='-';
 
   bool isTesting = false;
 
@@ -100,6 +97,22 @@ class _SpeedTestState extends State<SpeedTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0.0,
+        title: const Padding(
+          padding: EdgeInsets.only(top: 25),
+          child: Text(
+              'Speed Test',
+              style: TextStyle(
+                  fontSize: 28.0,
+                  fontFamily: 'OpenSans-SemiBold',
+                  fontWeight: FontWeight.w600
+              )
+          ),
+        ),
+        backgroundColor: kDarkGrey,
+      ),
       backgroundColor: kDarkGrey,
       body: body(),
     );
@@ -120,18 +133,18 @@ class _SpeedTestState extends State<SpeedTest> {
         children: <Widget>[
           SfRadialGauge(
               enableLoadingAnimation: true,
-              animationDuration: 2000,
+              animationDuration: 800,
               axes: <RadialAxis>[
                 RadialAxis(
                     showLabels: false,
                     showTicks: false,
                     axisLineStyle: AxisLineStyle(
-                      color: kLightGrey.withOpacity(0.25),
+                      color: kLightGrey.withOpacity(0.1),
                       thickness: 25,
                       cornerStyle: CornerStyle.bothCurve,
                     ),
                     minimum: 0,
-                    maximum: 150,
+                    maximum: 300,
                     annotations: [
                       GaugeAnnotation(
                           widget:Padding(
@@ -149,8 +162,35 @@ class _SpeedTestState extends State<SpeedTest> {
                             ),
                           )
                       ),
+                      GaugeAnnotation(
+                          widget: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                    '${displayRate.round()}',
+                                    style: TextStyle(
+                                        color: kWhite,
+                                        fontSize: 32,
+                                        fontFamily:'OpenSans-Regular',
+                                        fontWeight: FontWeight.w600
+                                    )
+                                ),
+                                Text(
+                                    'Mbps',
+                                    style: TextStyle(
+                                        color: kBlue,
+                                        fontSize: 18,
+                                        fontFamily: 'OpenSans-Regular'
+                                    )
+                                )
+                              ]
+                          ),
+                          positionFactor: 0.9,
+                        angle: 90,
+
+                      )
                     ],
-                    pointers: <GaugePointer>[
+                    pointers: [
                       NeedlePointer(
                         value: displayRate,
                         enableAnimation: true,
@@ -163,130 +203,105 @@ class _SpeedTestState extends State<SpeedTest> {
                         ),
                       ),
                       RangePointer(
-                          value: displayRate,
-                          width: 26,
-                          enableAnimation: true,
-                          color: kBlue,
-                          cornerStyle: CornerStyle.bothCurve,
+                        value: displayRate,
+                        width: 25,
+                        enableAnimation: true,
+                        color: kBlue,
+                        cornerStyle: CornerStyle.bothCurve,
                       ),
                     ]),
               ]
           ),
-          Column(
+          Padding(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1,left: 35,right: 35),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                    '${displayRate.round()}',
-                    style: TextStyle(
-                        color: kWhite,
-                        fontSize: 32,
-                        fontFamily:'OpenSans-Regular',
-                        fontWeight: FontWeight.w600
-                    )
-                ),
-                Text(
-                    'Mbps',
-                    style: TextStyle(
-                        color: kBlue,
-                        fontSize: 18,
-                        fontFamily: 'OpenSans-Regular'
-                    )
-                )
-              ]
-          ),
-          SizedBox(height: 40),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                  padding: EdgeInsets.only(left: 30),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'download:'.toUpperCase(),
-                          style: TextStyle(
-                              color: kWhite,
-                              fontSize: 18,
-                              fontFamily:'OpenSans-SemiBold',
-                              fontWeight: FontWeight.w600
-                          ),
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'download:'.toUpperCase(),
+                        style: TextStyle(
+                            color: kWhite,
+                            fontSize: 18,
+                            fontFamily:'OpenSans-SemiBold',
+                            fontWeight: FontWeight.w500
                         ),
-                        SizedBox(height: 20),
-                        Row(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                  downloadRate == 0 ?'-':'${downloadRate.round()} ',
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                                downloadRate==0 ?'-':'${downloadRate.round()} ',
+                                style: TextStyle(
+                                    color: kWhite,
+                                    fontSize: 36,
+                                    fontFamily: 'OpenSans-Bold',
+                                    fontWeight: FontWeight.bold
+                                )
+                            ),
+                            downloadRate == 0  ? Text('') : Padding(
+                              padding: EdgeInsets.only(bottom: 4.5 ),
+                              child: Text(
+                                  'Mbps',
                                   style: TextStyle(
-                                      color: kWhite,
-                                      fontSize: 36,
-                                      fontFamily: 'OpenSans-Bold',
-                                      fontWeight: FontWeight.bold
+                                    color: kBlue,
+                                    fontSize: 16,
+                                    fontFamily: 'OpenSans-Regular',
                                   )
                               ),
-                              downloadRate == 0 ? Text('') : Padding(
-                                padding: EdgeInsets.only(bottom: 4.5 ),
-                                child: Text(
-                                    'Mbps',
-                                    style: TextStyle(
+                            )
+                          ]
+                      )
+                    ]
+                ),
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'upload:'.toUpperCase(),
+                        style: TextStyle(
+                            color: kWhite,
+                            fontSize: 18,
+                            fontFamily: 'OpenSans-SemiBold',
+                            fontWeight: FontWeight.w500
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                                uploadRate == 0  ?'-':'${uploadRate.round()} ',
+                                style: TextStyle(
+                                    color: kWhite,
+                                    fontSize: 36,
+                                    fontWeight: FontWeight.bold
+                                )
+                            ),
+                            uploadRate == 0  ? Text('') : Padding(
+                              padding: EdgeInsets.only(bottom: 4.5 ),
+                              child: Text(
+                                  'Mbps',
+                                  style: TextStyle(
                                       color: kBlue,
                                       fontSize: 16,
-                                      fontFamily: 'OpenSans-Regular',
-                                    )
-                                ),
-                              )
-                            ]
-                        )
-                      ]
-                  )
-              ),
-              Padding(
-                  padding: EdgeInsets.only(right: 30),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'upload:'.toUpperCase(),
-                          style: TextStyle(
-                              color: kWhite,
-                              fontSize: 18,
-                              fontFamily: 'OpenSans-SemiBold',
-                              fontWeight: FontWeight.w600
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Row(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                  uploadRate == 0 ?'-':'${uploadRate.round()} ',
-                                  style: TextStyle(
-                                      color: kWhite,
-                                      fontSize: 36,
-                                      fontWeight: FontWeight.bold
+                                      fontWeight: FontWeight.normal
                                   )
                               ),
-                              uploadRate == 0 ? Text('') : Padding(
-                                padding: EdgeInsets.only(bottom: 4.5 ),
-                                child: Text(
-                                    'Mbps',
-                                    style: TextStyle(
-                                        color: kBlue,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.normal
-                                    )
-                                ),
-                              )
-                            ]
-                        )
-                      ]
-                  )
-              )
-            ],
+                            )
+                          ]
+                      )
+                    ]
+                )
+              ],
+            ),
           )
         ],
       ),

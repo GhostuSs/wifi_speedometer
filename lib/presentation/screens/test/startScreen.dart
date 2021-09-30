@@ -67,13 +67,16 @@ class _TestScreen extends State<StartScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0.0,
-        title: const Text(
-            'Speed Test',
-          style: TextStyle(
-            fontSize: 28.0,
-            fontFamily: 'OpenSans-SemiBold',
-            fontWeight: FontWeight.w600
-          )
+        title: const Padding(
+          padding: EdgeInsets.only(top: 25),
+          child: Text(
+              'Speed Test',
+              style: TextStyle(
+                  fontSize: 28.0,
+                  fontFamily: 'OpenSans-SemiBold',
+                  fontWeight: FontWeight.w600
+              )
+          ),
         ),
         backgroundColor: kDarkGrey,
       ),

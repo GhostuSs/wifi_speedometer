@@ -26,7 +26,7 @@ class ResultsRateCard extends StatelessWidget{
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Center(child: Padding(
-                  padding: EdgeInsets.only(top: 10.0),
+                  padding: EdgeInsets.only(top: 20.0),
                   child:
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,7 +45,7 @@ class ResultsRateCard extends StatelessWidget{
                         keyVal==Keys.download
                             ? CupertinoIcons.chevron_down
                             : CupertinoIcons.chevron_up,
-                        size: 24.0,
+                        size: 26.0,
                         color: kLightGrey,
                       )
                     ],
@@ -62,8 +62,8 @@ class ResultsRateCard extends StatelessWidget{
                           style: TextStyle(
                               color: kWhite,
                               fontFamily: 'OpenSans-SemiBold',
-                              fontWeight: FontWeight.w600,
-                              fontSize: 24.0
+                              fontWeight: FontWeight.w500,
+                              fontSize: 28.0
                           ),
                         ),
                         Padding(
@@ -73,7 +73,7 @@ class ResultsRateCard extends StatelessWidget{
                               style: TextStyle(
                                   color: kBlue,
                                   fontFamily: 'OpenSans-Regular',
-                                  fontSize: 14.0
+                                  fontSize: 16.0
                               ),
                             )
                         ),

@@ -88,7 +88,7 @@ class _WifiScreen extends State<WifiScreen>{
                       color: kWhite,
                       fontSize: 32,
                       fontFamily: 'OpenSans-SemiBold',
-                      fontWeight: FontWeight.w600
+                      fontWeight: FontWeight.w500
                   ),
                 )
               ],

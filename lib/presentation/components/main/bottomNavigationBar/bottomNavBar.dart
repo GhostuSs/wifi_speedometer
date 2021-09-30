@@ -5,49 +5,29 @@ import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dar
 
 CupertinoTabBar btmNavBar(int selectedIndex) {
   return CupertinoTabBar(
-    backgroundColor: kBlack,
+    backgroundColor: Color(0xFF161616),
     activeColor: kBlue,
     inactiveColor: kLightGrey,
     currentIndex: selectedIndex,
+    border: Border(top: BorderSide(width: 10.0,color: Color(0xFF161616))),
     items: [
       BottomNavigationBarItem(
-          icon: Image.asset('assets/icons/test.png'),
+          icon: Icon(Icons.speed,color: kLightGrey,size: 30),
           label: 'Test',
-          activeIcon: Image.asset(
-            'assets/icons/test.png',
-            filterQuality: FilterQuality.high,
-            color: kBlue,
-          )
+          activeIcon: Icon(Icons.speed,color: kBlue,size: 30)
       ),
       BottomNavigationBarItem(
-          icon: Image.asset(
-            'assets/icons/tab_history.png',
-            filterQuality: FilterQuality.high),
+          icon: Icon(Icons.restore_rounded,color: kLightGrey,size: 30),
           label: 'History',
-          activeIcon: Image.asset(
-            'assets/icons/tab_history.png',
-            color: kBlue,
-          )),
+          activeIcon: Icon(Icons.restore_rounded,color: kBlue,size: 30)),
       BottomNavigationBarItem(
-          icon: Image.asset(
-              'assets/icons/tab_pass.png',
-            filterQuality: FilterQuality.high,
-          ),
+          icon: Icon(Icons.lock_outlined,color: kLightGrey,size: 30),
           label: 'Pass',
-          activeIcon: Image.asset(
-            'assets/icons/tab_pass.png',
-            color: kBlue,
-          )),
+          activeIcon: Icon(Icons.lock_outlined,color: kBlue,size: 30)),
       BottomNavigationBarItem(
-          icon: Image.asset(
-              'assets/icons/tab_settings.png',
-            filterQuality: FilterQuality.high,
-          ),
+          icon: Icon(Icons.settings,color: kLightGrey,size: 29),
           label: 'Settings',
-          activeIcon: Image.asset(
-            'assets/icons/tab_settings.png',
-            color: kBlue,
-          )),
+          activeIcon: Icon(Icons.settings,color: kBlue,size: 29)),
     ],
   );
 }

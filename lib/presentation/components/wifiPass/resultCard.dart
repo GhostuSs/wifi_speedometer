@@ -30,7 +30,7 @@ class ResultCard extends StatelessWidget {
               style: TextStyle(
                   fontSize: 18,
                   fontFamily: 'OpenSans-Regualar',
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w500,
                   color: kWhite
               ),
             ),
