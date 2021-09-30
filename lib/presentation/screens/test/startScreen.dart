@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/src/provider.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/components/main/startBtn.dart';
@@ -9,6 +10,7 @@ import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dar
 import 'package:device_information/device_information.dart';
 import 'package:dio/dio.dart';
 import 'package:dart_ipify/dart_ipify.dart';
+import 'package:wifi_speed_test/presentation/screens/test/speedTest.dart';
 
 class StartScreen extends StatefulWidget {
   @override
@@ -78,9 +80,9 @@ class _TestScreen extends State<StartScreen> {
       body: Center(
           child: _connectionStatus != ConnectivityResult.none  ? StartButton(onPressed: (){
             setState((){
-              Navigator.pushNamed(context, '/speedtest');
+              Navigator.push(context, PageTransition(child: SpeedTest(), type: PageTransitionType.leftToRight));
             });
-          }) : Text('no internet connection')
+          }) : Text('')
       )
     );
   }

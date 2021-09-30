@@ -16,7 +16,7 @@ class _HistoryCard extends State<HistoryCard>{
   Data data = new Data();
   _HistoryCard(Data this.data);
   @override
-  Widget build(BuildContext context) {;
+  Widget build(BuildContext context) {
   return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
       child: Container(

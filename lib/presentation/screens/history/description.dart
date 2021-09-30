@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/components/history/appBarDescription.dart';
 import 'package:wifi_speed_test/presentation/components/history/descriptionBody.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';

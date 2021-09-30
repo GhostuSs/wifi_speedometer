@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 import 'package:wifi_speed_test/routes.dart';
 import 'Data/resultData.dart';
+import 'Data/historyData.dart';
 
 bool seen=false;
 Future<void> main() async {
@@ -17,9 +18,11 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         Provider<Data>(create: (_) => Data()),
+        Provider<HistoryList>(create: (_) => HistoryList()),
       ],
       child: MaterialApp(
         color: kDarkGrey,
+          darkTheme: ThemeData.dark(),
           debugShowCheckedModeBanner: false,
           initialRoute: seen ? '/' : "/onboarding" ,
           routes: routes

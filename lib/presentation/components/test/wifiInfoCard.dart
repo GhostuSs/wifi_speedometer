@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 class WifiInfoCard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    final suffix=context.read<Data>();
     var height = MediaQuery.of(context).size.height;
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: height*0.02),
@@ -22,11 +21,11 @@ class WifiInfoCard extends StatelessWidget{
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children:[
-            fields(CupertinoIcons.globe, 'ISP',suffix.isp,false),
-            fields(CupertinoIcons.wifi, 'Wi-Fi Name', '${suffix.wifi}',false),
-            fields(CupertinoIcons.location_solid, 'IP Address', '${suffix.ip}',false),
+            fields(CupertinoIcons.globe, 'ISP',context.read<Data>().isp,false),
+            fields(CupertinoIcons.wifi, 'Wi-Fi Name', '${context.read<Data>().wifi}',false),
+            fields(CupertinoIcons.location_solid, 'IP Address', '${context.read<Data>().ip}',false),
             fields(CupertinoIcons.device_laptop, 'Server','Vitry-sur-Seine, Fr',false),
-            fields(Icons.phone_iphone, 'Device', '${suffix.device}',true),
+            fields(Icons.phone_iphone, 'Device', '${context.read<Data>().device}',true),
 
           ],
         ),

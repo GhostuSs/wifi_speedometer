@@ -1,3 +1,5 @@
+import 'dart:ui';
+import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:internet_speed_test/internet_speed_test.dart';
@@ -7,6 +9,7 @@ import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/testServer.dart';
 import 'package:provider/provider.dart';
+import 'package:wifi_speed_test/presentation/screens/test/resultScreen.dart';
 class SpeedTest extends StatefulWidget {
   @override
   _SpeedTestState createState() => _SpeedTestState();
@@ -38,8 +41,7 @@ class _SpeedTestState extends State<SpeedTest> {
                 isTesting = false;
                 context.read<Data>().downloadRate=downloadRate.round();
                 context.read<Data>().uploadRate=uploadRate.round();
-                await Future.delayed(const Duration(seconds: 1,milliseconds: 500));
-                Navigator.pushNamed(context, '/results');
+                Navigator.push(context, PageTransition(child: ResultScreen(), type: PageTransitionType.leftToRight));
               });
             },
             onProgress: (double percent, double transferRate,
@@ -118,7 +120,7 @@ class _SpeedTestState extends State<SpeedTest> {
         children: <Widget>[
           SfRadialGauge(
               enableLoadingAnimation: true,
-              animationDuration: 500,
+              animationDuration: 2000,
               axes: <RadialAxis>[
                 RadialAxis(
                     showLabels: false,
@@ -162,10 +164,11 @@ class _SpeedTestState extends State<SpeedTest> {
                       ),
                       RangePointer(
                           value: displayRate,
-                          width: 25,
+                          width: 26,
                           enableAnimation: true,
                           color: kBlue,
-                          cornerStyle: CornerStyle.bothCurve)
+                          cornerStyle: CornerStyle.bothCurve,
+                      ),
                     ]),
               ]
           ),

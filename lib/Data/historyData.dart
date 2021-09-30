@@ -4,6 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
 
+class HistoryList{
+  late List<Data> dataList;
+}
+
 loadData(BuildContext context) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? json = prefs.getString('testData_key') ?? null;

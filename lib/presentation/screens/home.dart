@@ -17,17 +17,21 @@ class _HomePage extends State<HomePage> {
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    List pages = [
-      StartScreen(),
-      HistoryScreen(),
-      WifiScreen(),
-      SettingsScreen()
-    ];
     return CupertinoTabScaffold(
       backgroundColor: kBlue,
       tabBar: btmNavBar(_selectedIndex),
-      tabBuilder: (BuildContext context, _selectedIndex) {
-        return pages.elementAt(_selectedIndex);
+      tabBuilder: (BuildContext context, _selectedIndex){
+        List pages = [
+          StartScreen(),
+          HistoryScreen(),
+          WifiScreen(),
+          SettingsScreen()
+        ];
+        return CupertinoTabView(
+          builder:(context){
+            return pages[_selectedIndex];
+          } ,
+        );
       },
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
+import 'package:wifi_speed_test/Data/historyData.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/screens/constants/colorPallette.dart';
 
@@ -60,7 +61,7 @@ PreferredSizeWidget appBarDescription(BuildContext context) {
                               color: kBlue),
                         ),
                         onPressed: (){
-                          context.read<Data>().removeData();
+                          clearList();
                           Navigator.pushNamed(context, '/');
                         },
                       )

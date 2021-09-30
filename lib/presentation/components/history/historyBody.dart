@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wifi_speed_test/Data/historyData.dart';
 import 'package:wifi_speed_test/Data/resultData.dart';
@@ -15,7 +16,6 @@ class HistoryBody extends StatefulWidget{
 
 }
 class _HistoryBody extends State<HistoryBody>{
-  late List<Data> dataList;
   late List<Widget> historyList;
   late SharedPreferences sharedPreferences;
 
@@ -23,10 +23,10 @@ class _HistoryBody extends State<HistoryBody>{
   void initState(){
     super.initState();
   }
-  Future<bool> initSharedPreferences()async{
+  Future<bool> initSharedPreferences(BuildContext context)async{
     sharedPreferences = await SharedPreferences.getInstance();
-    dataList=await getList();
-    historyList = List.generate(dataList.length, (index) => HistoryCard(dataList[index]));
+    context.read<HistoryList>().dataList=await getList();
+    historyList = List.generate(context.read<HistoryList>().dataList.length, (index) => HistoryCard(context.read<HistoryList>().dataList[index]));
     return true;
   }
 
@@ -34,7 +34,7 @@ class _HistoryBody extends State<HistoryBody>{
   Widget build(BuildContext context) {
     return Container(
       child: FutureBuilder(
-        future: initSharedPreferences(), builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        future: initSharedPreferences(context), builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.data == null) {
           return Center(
             child: CircularProgressIndicator(
@@ -44,7 +44,7 @@ class _HistoryBody extends State<HistoryBody>{
         }else{
           return ListView.builder(
               itemCount: historyList.length,
-              itemBuilder: (context, index) => HistoryCard(dataList[index]));
+              itemBuilder: (context, index) => HistoryCard(context.read<HistoryList>().dataList[index]));
         }
       }
       )
@@ -64,3 +64,4 @@ class _HistoryBody extends State<HistoryBody>{
     }
   }
 }
+
