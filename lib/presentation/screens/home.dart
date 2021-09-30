@@ -22,15 +22,25 @@ class _HomePage extends State<HomePage> {
       tabBar: btmNavBar(_selectedIndex),
       tabBuilder: (BuildContext context, _selectedIndex){
         List pages = [
-          new StartScreen(),
-          new HistoryScreen(),
-          new WifiScreen(),
-          new SettingsScreen()
+          StartScreen(),
+          HistoryScreen(),
+          WifiScreen(),
+          SettingsScreen()
         ];
         return CupertinoTabView(
           builder:(context){
-            return pages[_selectedIndex];
-          },
+            switch(_selectedIndex){
+              case 1: {
+                return new HistoryScreen();
+              }
+              case 2:{
+                return new WifiScreen();
+              }
+              default: {
+                return pages[_selectedIndex];
+              }
+            }
+          }
         );
       },
     );

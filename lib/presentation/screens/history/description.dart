@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:wifi_speed_test/Data/resultData.dart';
 import 'package:wifi_speed_test/presentation/components/history/description/appBarDescription.dart';
 import 'package:wifi_speed_test/presentation/components/history/description/descriptionBody.dart';

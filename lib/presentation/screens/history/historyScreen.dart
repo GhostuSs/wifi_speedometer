@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:wifi_speed_test/Data/historyData.dart';
 import 'package:wifi_speed_test/presentation/components/history/history/appBarHistory.dart';
 import 'package:wifi_speed_test/presentation/components/history/history/historyBody.dart';
@@ -13,6 +14,8 @@ class HistoryScreen extends StatefulWidget{
 class _HistoryScreen extends State<HistoryScreen>{
   @override
   void initState() {
+    setState(() {
+    });
     super.initState();
   }
   @override

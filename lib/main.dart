@@ -12,7 +12,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   seen = prefs.getBool("seen") ?? false;
-  print(seen.toString());
   await prefs.setBool("seen", true);
   runApp(
     MultiProvider(

@@ -25,92 +25,97 @@ class _WifiScreen extends State<WifiScreen>{
         .of(context)
         .size
         .height;
-    return SafeArea(
-      top: false,
-      maintainBottomViewPadding: true,
-        child: Scaffold(
-      backgroundColor: kDarkGrey,
-      floatingActionButton: Padding(
-        padding: EdgeInsets.only(left: 20, right: 20),
-        child: Stack(
-          children: [
-            Button(state, onPressed),
-            SizedBox(height: height * 0.1)
-          ],
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-                top: height * 0.1, bottom: height * 0.04),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Wi-Fi Pass',
-                  style: TextStyle(
-                      color: kWhite,
-                      fontSize: 32,
-                      fontFamily: 'OpenSans-SemiBold',
-                      fontWeight: FontWeight.w500
-                  ),
-                )
-              ],
-            ),
-          ),
-          Container(
-            child: Padding(
+    return new GestureDetector(
+      onTap: (){
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      child: SafeArea(
+          top: false,
+          maintainBottomViewPadding: true,
+          child: Scaffold(
+            backgroundColor: kDarkGrey,
+            floatingActionButton: Padding(
               padding: EdgeInsets.only(left: 20, right: 20),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
+              child: Stack(
                 children: [
-                  ResultCard(state: cardState, isUnique: uniqueness,passwordPosition: passwordPosition),
-                  SizedBox(height: height * 0.01),
-                  Container(
-                    height: 56,
-                    decoration: BoxDecoration(
-                        color: kLightGrey.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: TextField(
-                        controller: textFieldController,
-                        autofocus: false,
-                        style: TextStyle(
-                            color: kWhite,
-                            fontSize: 16.0,
-                            fontFamily: 'OpenSans-Regular'
-                        ),
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-
-                        ),
-                        cursorColor: kBlue,
-                        autocorrect: false,
-                        onChanged: (str) {
-                          pass = str;
-                          setState(() {
-                            pass.isNotEmpty ? state=BtnState.ready : state=BtnState.notReady;
-                          });
-                          },
-                        onEditingComplete: (){
-                          setState(() {
-                            pass.isNotEmpty ? state=BtnState.ready : state=BtnState.notReady;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
+                  Button(state, onPressed),
+                  SizedBox(height: height * 0.1)
                 ],
               ),
             ),
-          ),
-        ],
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+            body: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: height * 0.1, bottom: height * 0.04),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Wi-Fi Pass',
+                        style: TextStyle(
+                            color: kWhite,
+                            fontSize: 32,
+                            fontFamily: 'OpenSans-SemiBold',
+                            fontWeight: FontWeight.w500
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 20, right: 20),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        ResultCard(state: cardState, isUnique: uniqueness,passwordPosition: passwordPosition),
+                        SizedBox(height: height * 0.01),
+                        Container(
+                          height: 56,
+                          decoration: BoxDecoration(
+                              color: kLightGrey.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 15),
+                            child: TextField(
+                              controller: textFieldController,
+                              autofocus: false,
+                              style: TextStyle(
+                                  color: kWhite,
+                                  fontSize: 16.0,
+                                  fontFamily: 'OpenSans-Regular'
+                              ),
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+
+                              ),
+                              cursorColor: kBlue,
+                              autocorrect: false,
+                              onChanged: (str) {
+                                pass = str;
+                                setState(() {
+                                  pass.isNotEmpty ? state=BtnState.ready : state=BtnState.notReady;
+                                });
+                              },
+                              onEditingComplete: (){
+                                setState(() {
+                                  pass.isNotEmpty ? state=BtnState.ready : state=BtnState.notReady;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
       ),
-    )
     );
   }
   onPressed() async {
