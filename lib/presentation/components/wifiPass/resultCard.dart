@@ -41,14 +41,15 @@ class ResultCard extends StatelessWidget {
           ),
         ),
       ),
-    ) : result = Row(
+    )
+        : result =Row(
       children: [
         Text(
           ' Find how often your Wi-Fi password is used',
           style: TextStyle(
               color: kWhite,
               fontFamily: 'OpenSans-Regular',
-              fontSize: 14
+              fontSize: MediaQuery.of(context).size.width*0.04
           ),
         ),
       ],

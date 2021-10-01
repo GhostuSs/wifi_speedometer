@@ -8,77 +8,73 @@ class WifiInfoCard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    return Padding(
-        padding: EdgeInsets.symmetric(horizontal: height*0.015),
-        child: Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color:kLightGrey.withOpacity(0.15),
-        borderRadius: BorderRadius.circular(10.0),
-      ),
+    return AspectRatio(
+      aspectRatio: 19/15,
       child: Padding(
-        padding: EdgeInsets.only(left: 15,right: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children:[
-            fields(CupertinoIcons.globe, 'ISP',context.read<Data>().isp,false),
-            fields(CupertinoIcons.wifi, 'Wi-Fi Name', '${context.read<Data>().wifi}',false),
-            fields(CupertinoIcons.location_solid, 'IP Address', '${context.read<Data>().ip}',false),
-            fields(CupertinoIcons.device_laptop, 'Server','Vitry-sur-Seine, Fr',false),
-            fields(Icons.phone_iphone, 'Device', '${context.read<Data>().device}',true),
-
-          ],
-        ),
+          padding: EdgeInsets.symmetric(horizontal:height*0.015),
+          child: Container(
+            decoration: BoxDecoration(
+              color:kLightGrey.withOpacity(0.15),
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: Padding(
+                padding: EdgeInsets.only(left: 15,right: 20),
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children:[
+                      fields(CupertinoIcons.globe, 'ISP',context.read<Data>().isp,false,context),
+                      fields(CupertinoIcons.wifi, 'Wi-Fi Name', '${context.read<Data>().wifi}',false,context),
+                      fields(CupertinoIcons.location_solid, 'IP Address', '${context.read<Data>().ip}',false,context),
+                      fields(CupertinoIcons.device_laptop, 'Server','Vitry-sur-Seine, Fr',false,context),
+                      fields(Icons.phone_iphone, 'Device', '${context.read<Data>().device}',true,context),
+                    ],
+                  ),
+                )
+            ),
+          )
       ),
-    )
     );
   }
-Widget fields(IconData icon,String nameOfField,value,last){
-    double fontSize=20;
-    double iconSize=26;
+Widget fields(IconData icon,String nameOfField,value,last,context){//24
     return Padding(
-      padding: EdgeInsets.only(top: 15),
+      padding: EdgeInsets.only(top: 10),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Padding(
-            padding: EdgeInsets.only(bottom: 3),
-            child: Row(
-              children: [
-                Padding(
-                    padding: EdgeInsets.only(top: 0),
-                    child: Icon(
-                      icon,
-                      color: kLightGrey,
-                      size: iconSize,
-                    )
-                ),//Icon
-                Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Text(
-                      '$nameOfField',
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
+          Row(
+            children: [
+              Icon(
+                  icon,
+                  color: kLightGrey,
+                  size:24
+              ),//Icon
+              Padding(
+                  padding: EdgeInsets.only(left: 5),
+                  child: Text(
+                    '$nameOfField',
+                    overflow: TextOverflow.clip,
+                    style: TextStyle(
                         color: kLightGrey,
-                        fontSize: fontSize,
                         fontFamily: 'OpenSans-Regular',
                         fontWeight: FontWeight.w400,
-                      ),
-                    )
+                        fontSize: 18
+                    ),
+                  )
+              ),
+              Spacer(),
+              Text(
+                value=='null' ? 'Unknown' : '$value',
+                style: TextStyle(
+                    color: kWhite,
+                    fontWeight: FontWeight.w300,
+                    fontFamily: 'OpenSans-Regular',
+                    fontSize: 18
                 ),
-                Spacer(),
-                Text(
-                  value=='null' ? 'Unknown' : '$value',
-                  style: TextStyle(
-                      color: kWhite,
-                      fontWeight: FontWeight.w300,
-                      fontFamily: 'OpenSans-Regular',
-                      fontSize: fontSize
-                  ),
-                )
-              ],
+              )
+            ],
 
-            ),
           ),
           last
               ? Text('')

@@ -13,6 +13,7 @@ Future<void> main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   seen = prefs.getBool("seen") ?? false;
   await prefs.setBool("seen", true);
+  seen=false;
   runApp(
     MultiProvider(
       providers: [

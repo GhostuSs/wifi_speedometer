@@ -16,7 +16,7 @@ class ResultsRateCard extends StatelessWidget{
     return Padding(
       padding: EdgeInsets.only(left: keyVal == Keys.download ? 10 : 0, right:keyVal == Keys.upload ? 10 : 0,bottom:5,top:5),
       child: Container(
-        width: width*0.45,
+          width: width*0.45,
           decoration: BoxDecoration(
             color:kLightGrey.withOpacity(0.15),
             borderRadius: BorderRadius.circular(10.0),

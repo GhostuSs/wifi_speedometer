@@ -36,8 +36,8 @@ class WifiInfoHistoryCard extends StatelessWidget{
     );
   }
   Widget fields(IconData icon,String nameOfField,value,last){
-    double fontSize=20;
-    double iconSize=26;
+    double fontSize=18;
+    double iconSize=24;
     return Padding(
       padding: EdgeInsets.only(top: 15),
       child: Column(

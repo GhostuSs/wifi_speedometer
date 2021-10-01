@@ -16,7 +16,7 @@ List<SliderModel> getSlides(){
   slides.add(SliderModel(
       imagePath: 'assets/onboarding/feedback.png',
       title: 'Help us to improve the app',
-      desc: 'We always monitor your comments and listen to your opinion'));
+      desc: 'We always monitor your comments and \nlisten to your opinion'));
   slides.add(SliderModel(
       imagePath: 'assets/onboarding/stats.png',
       title: 'Stats of movements',

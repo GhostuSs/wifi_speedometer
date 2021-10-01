@@ -25,6 +25,7 @@ class _ResultScreen extends State<ResultScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: kDarkGrey,
       appBar: appBarResults(context),
       body: ResultBody()

@@ -83,7 +83,7 @@ class _TestScreen extends State<StartScreen> {
       body: Center(
           child: _connectionStatus != ConnectivityResult.none  ? StartButton(onPressed: (){
             setState((){
-              Navigator.push(context, PageTransition(child: SpeedTest(), type: PageTransitionType.leftToRight));
+              Navigator.push(context, PageTransition(child: SpeedTest(), type: PageTransitionType.rightToLeft));
             });
           }) : Text('')
       )

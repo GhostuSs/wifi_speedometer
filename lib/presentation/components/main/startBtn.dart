@@ -15,8 +15,8 @@ class StartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250.0,
-      height: 250.0,
+      width: MediaQuery.of(context).size.width*0.6,
+      height: MediaQuery.of(context).size.width*0.6,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(125.0)),
           gradient: LinearGradient(

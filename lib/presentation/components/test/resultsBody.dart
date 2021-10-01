@@ -10,8 +10,9 @@ class ResultBody extends StatelessWidget{
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.width;
     return Column(
+      mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(height: 15),
+          SizedBox(height: height*0.015),
           Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -42,7 +43,7 @@ class ResultBody extends StatelessWidget{
               ],
             ),
           ),
-          WifiInfoCard(),
+          WifiInfoCard()
         ]
     );
   }

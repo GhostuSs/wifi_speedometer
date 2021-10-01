@@ -78,33 +78,33 @@ Widget btmSheet(bool isLast,String text,onPressed){
                     borderRadius: BorderRadius.circular(8.0)
                 ),
                 child: TextButton(
-                  child: Text(
-                    '$text',
-                    style: TextStyle(
-                      color: kWhite,
-                      fontSize: 18.0,
-                      fontFamily: 'OpenSans-Bold',
-                      fontWeight: FontWeight.bold,
+                    child: Text(
+                      '$text',
+                      style: TextStyle(
+                        color: kWhite,
+                        fontSize: 18.0,
+                        fontFamily: 'OpenSans-Bold',
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  onPressed:onPressed),
-                ),
+                    onPressed:onPressed),
               ),
+            ),
             isLast
                 ? Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
                         child: Text(
-                            'Privacy Policy',
-                            style: TextStyle(
+                          'Privacy Policy',
+                          style: TextStyle(
                               color: Color(0xFFAEAEB2),
                               fontFamily: 'OpenSans-Regular',
                               fontSize: 14.0
-                            ),
+                          ),
                         ),
                         onTap: ()=>{},
                       ),

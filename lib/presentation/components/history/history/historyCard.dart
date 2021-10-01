@@ -48,7 +48,7 @@ class _HistoryCard extends State<HistoryCard>{
                           fontFamily: 'OpenSans-SemiBold',
                           fontSize: 18
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
