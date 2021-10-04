@@ -5,7 +5,7 @@ IOS available.
 
 UI
 
-[![Image](GhostuSs/wifi_speedometer/assets/1.png)]
+![Screenshot](wifi_speedometer/assets/1.png)
 
 
 
