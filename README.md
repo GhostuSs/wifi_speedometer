@@ -14,7 +14,7 @@ ________________________________________________________________________________
 
 ## Working version (Video)
 
-[![Watch the video](https://github.com/GhostuSs/wifi_speedometer/blob/main/assets/video.MP4)
+![Watch the video](https://github.com/GhostuSs/wifi_speedometer/blob/main/assets/video.MP4)
 
 ____________________________________________________________________________________________________________________________________________________________________
 
