@@ -1,8 +1,6 @@
 # wifi_speed_test
+# [![Flutter logo][]][flutter.dev]
+Easy way to measure your wifi-speed.
 
-A new Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
 
