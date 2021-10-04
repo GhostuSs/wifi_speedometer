@@ -13,7 +13,7 @@ ________________________________________________________________________________
 ____________________________________________________________________________________________________________________________________________________________________
 
 ## Working version (Video)
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://github.com/GhostuSs/wifi_speedometer/blob/main/assets/IMG_7565.MOV)
+[![Watch the video](<img src="https://github.com/GhostuSs/wifi_speedometer/blob/main/assets/icon.png" width="100" />)](https://github.com/GhostuSs/wifi_speedometer/blob/main/assets/IMG_7565.MOV)
 
 ____________________________________________________________________________________________________________________________________________________________________
 
