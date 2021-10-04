@@ -1,4 +1,4 @@
-# Wi-Fi speed test <img src="https://github.com/GhostuSs/wifi_speedometer/blob/main/assets/icon.png" width="24" />
+# Wi-Fi speed test <img src="https://github.com/GhostuSs/wifi_speedometer/blob/main/assets/icon.png" width="40" />
 
 [![Flutter](https://img.shields.io/badge/-Flutter-090909?style=for-the-badge&logo=flutter&logoColor=47C5FB)](https://flutter.dev) [![Dart](https://img.shields.io/badge/-Dart-090909?style=for-the-badge&logo=dart&logoColor=097CDB)](https://dart.dev)
 ____________________________________________________________________________________________________________________________________________________________________
